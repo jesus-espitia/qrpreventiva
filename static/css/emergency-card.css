@@ -1,212 +1,205 @@
-/* ============================================================
-   VARIABLES DE DISEÑO
-   ============================================================ */
 :root {
-    --card-bg: #ffffff;
-    --card-radius: 14px;
-    --text-primary: #16161a;
-    --text-secondary: #4a4a5e;
-    --text-muted: #8e8ea0;
-    --border-light: #eaeaf0;
-    --border-medium: #d4d4de;
+    /* Rojos de emergencia */
+    --red-900: #7F1D1D;
+    --red-800: #991B1B;
+    --red-700: #B91C1C;
+    --red-600: #DC2626;
+    --red-500: #EF4444;
+    --red-400: #F87171;
+    --red-100: #FEE2E2;
+    --red-50:  #FEF2F2;
 
-    --emergency-red: #c0212a;
-    --emergency-red-dark: #8b151c;
-    --critical-bg: rgba(192, 33, 42, 0.04);
-    --critical-border: #c0212a;
-    --critical-text: #9b1b22;
+    /* Azules clínicos */
+    --blue-900: #1E3A5F;
+    --blue-800: #1E40AF;
+    --blue-700: #1D4ED8;
+    --blue-600: #2563EB;
+    --blue-500: #3B82F6;
+    --blue-100: #DBEAFE;
+    --blue-50:  #EFF6FF;
 
-    --warning-bg: rgba(210, 120, 0, 0.04);
-    --warning-border: #c97a00;
-    --warning-text: #9a5e00;
+    /* Amarillos advertencia */
+    --amber-700: #B45309;
+    --amber-600: #D97706;
+    --amber-500: #F59E0B;
+    --amber-100: #FEF3C7;
+    --amber-50:  #FFFBEB;
 
-    --info-bg: rgba(30, 100, 200, 0.04);
-    --info-border: #2563eb;
-    --info-text: #1d4ed8;
+    /* Naranjas restricción */
+    --orange-700: #C2410C;
+    --orange-600: #EA580C;
+    --orange-500: #F97316;
+    --orange-100: #FFEDD5;
+    --orange-50:  #FFF7ED;
 
-    --danger-bg: rgba(192, 33, 42, 0.06);
-    --danger-border: #b91c1c;
-    --danger-text: #991b1b;
+    /* Neutros */
+    --gray-950: #0A0A0A;
+    --gray-900: #111827;
+    --gray-800: #1F2937;
+    --gray-700: #374151;
+    --gray-600: #4B5563;
+    --gray-500: #6B7280;
+    --gray-400: #9CA3AF;
+    --gray-300: #D1D5DB;
+    --gray-200: #E5E7EB;
+    --gray-100: #F3F4F6;
+    --gray-50:  #F9FAFB;
+    --white:    #FFFFFF;
 
-    --note-bg: rgba(100, 100, 120, 0.03);
-    --note-border: #7c7c90;
-    --note-text: #55556a;
+    /* Especiales */
+    --green-wa: #25D366;
+    --green-wa-dark: #128C7E;
 
-    --wa-green: #25d366;
-    --call-blue: #1a73e8;
-    --copy-gray: #8e8ea0;
+    /* Sombras */
+    --shadow-sm:  0 1px 2px rgba(0,0,0,0.06);
+    --shadow-md:  0 4px 12px rgba(0,0,0,0.08);
+    --shadow-lg:  0 8px 30px rgba(0,0,0,0.1);
+    --shadow-xl:  0 12px 40px rgba(0,0,0,0.12);
+    --shadow-red: 0 4px 20px rgba(220,38,38,0.25);
 
-    --shadow-card:
-        0 1px 2px rgba(0,0,0,0.04),
-        0 4px 12px rgba(0,0,0,0.06),
-        0 12px 40px rgba(0,0,0,0.06);
-    --shadow-card-hover:
-        0 2px 4px rgba(0,0,0,0.05),
-        0 8px 20px rgba(0,0,0,0.08),
-        0 20px 60px rgba(0,0,0,0.08);
+    /* Radios */
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 16px;
+    --radius-xl: 20px;
 
-    --font-display: 'Poppins', sans-serif;
-    --font-body: 'Inter', sans-serif;
+    /* Tipografía */
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-display: 'Poppins', var(--font-body);
 }
 
-/* ============================================================
-   RESET Y BASE
-   ============================================================ */
-*, *::before, *::after {
+/* --- Reset y base --- */
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
 html {
-    font-size: 15px;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
 }
 
 body {
     font-family: var(--font-body);
-    color: var(--text-primary);
-    background: #e8e8f0;
+    font-size: 14px;
     line-height: 1.5;
+    color: var(--gray-800);
+    background-color: var(--gray-100);
     min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-ul {
-    list-style: none;
-}
-
-button {
-    border: none;
-    background: none;
-    cursor: pointer;
-    font-family: inherit;
-    font-size: inherit;
-    color: inherit;
-}
-
-.sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-    border: 0;
-}
-
-/* ============================================================
-   FONDO DE PÁGINA
-   ============================================================ */
+/* --- Contenedor de página --- */
 .page-wrapper {
     display: flex;
     justify-content: center;
-    padding: 32px 20px 48px;
+    padding: 16px;
     min-height: 100vh;
-    background:
-        radial-gradient(circle at 20% 20%, rgba(192,33,42,0.03) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(37,99,235,0.03) 0%, transparent 50%),
-        #e8e8f0;
 }
 
 /* ============================================================
-   TARJETA — Contenedor principal
+   TARJETA PRINCIPAL
    ============================================================ */
 .med-card {
     width: 100%;
-    max-width: 860px;
-    background: var(--card-bg);
-    border-radius: var(--card-radius);
-    box-shadow: var(--shadow-card);
-    border: 1px solid var(--border-light);
+    max-width: 680px;
+    background: var(--white);
+    border-radius: var(--radius-xl);
     overflow: hidden;
-    transition: box-shadow 0.4s ease, transform 0.4s ease;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--gray-200);
     position: relative;
 }
 
-.med-card:hover {
-    box-shadow: var(--shadow-card-hover);
-    transform: translateY(-2px);
-}
-
 /* ============================================================
-   FRANJA DE EMERGENCIA
+   FRANJA DE EMERGENCIA (strip)
    ============================================================ */
 .card-strip {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 12px 24px;
-    background: linear-gradient(135deg, var(--emergency-red) 0%, var(--emergency-red-dark) 100%);
-    color: #fff;
+    padding: 12px 16px;
+    background: linear-gradient(135deg, var(--red-800) 0%, var(--red-600) 50%, var(--red-700) 100%);
+    color: var(--white);
+    gap: 8px;
+    flex-wrap: wrap;
 }
 
 .strip-left {
     display: flex;
     align-items: center;
     gap: 10px;
-    font-size: 0.8rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    font-weight: 600;
 }
 
+/* Punto pulsante */
 .pulse-dot {
+    position: relative;
     width: 10px;
     height: 10px;
-    background: #fff;
+    background: var(--white);
     border-radius: 50%;
-    position: relative;
     flex-shrink: 0;
+    animation: pulse-ring 1.5s ease-out infinite;
 }
 
-.pulse-dot::before,
-.pulse-dot::after {
+.pulse-dot::before {
     content: '';
     position: absolute;
     inset: -4px;
     border-radius: 50%;
     border: 2px solid rgba(255,255,255,0.6);
-    animation: pulse-ring 2s ease-out infinite;
-}
-
-.pulse-dot::after {
-    animation-delay: 0.6s;
+    animation: pulse-ring-outer 1.5s ease-out infinite;
 }
 
 @keyframes pulse-ring {
-    0% {
-        transform: scale(0.8);
-        opacity: 1;
-    }
-    100% {
-        transform: scale(2.2);
-        opacity: 0;
-    }
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(0.85); }
 }
 
+@keyframes pulse-ring-outer {
+    0% { transform: scale(0.8); opacity: 1; }
+    100% { transform: scale(2); opacity: 0; }
+}
+
+/* Botón imprimir */
 .strip-print {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 6px;
-    color: rgba(255,255,255,0.85);
-    font-size: 0.78rem;
+    padding: 6px 12px;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: var(--radius-sm);
+    color: var(--white);
+    font-size: 12px;
     font-weight: 500;
-    padding: 6px 14px;
-    border-radius: 6px;
-    border: 1px solid rgba(255,255,255,0.2);
+    font-family: var(--font-body);
+    cursor: pointer;
     transition: all 0.2s ease;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
 }
 
 .strip-print:hover {
-    background: rgba(255,255,255,0.15);
-    color: #fff;
+    background: rgba(255,255,255,0.25);
     border-color: rgba(255,255,255,0.4);
+}
+
+.strip-print:active {
+    transform: scale(0.96);
 }
 
 .strip-print svg {
     width: 16px;
     height: 16px;
+    flex-shrink: 0;
 }
 
 /* ============================================================
@@ -216,60 +209,48 @@ button {
     height: 3px;
     background: linear-gradient(
         90deg,
-        #c0c0c0 0%,
-        #ffd700 15%,
-        #87ceeb 30%,
-        #98fb98 45%,
-        #dda0dd 60%,
-        #ffd700 75%,
-        #87ceeb 90%,
-        #c0c0c0 100%
+        var(--red-500),
+        var(--amber-500),
+        var(--blue-500),
+        var(--red-500),
+        var(--amber-500),
+        var(--blue-500),
+        var(--red-500)
     );
     background-size: 200% 100%;
-    animation: holo-shift 4s ease-in-out infinite;
+    animation: holo-slide 4s linear infinite;
 }
 
-@keyframes holo-shift {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
+@keyframes holo-slide {
+    0% { background-position: 0% 0; }
+    100% { background-position: 200% 0; }
 }
 
 /* ============================================================
-   ENCABEZADO — Foto + Info + Grupo sanguíneo
+   HEADER — Foto + Info + Sangre
    ============================================================ */
 .card-header {
     display: flex;
-    gap: 28px;
-    padding: 28px 28px 24px;
+    gap: 16px;
+    padding: 20px 16px;
+    position: relative;
+    background: linear-gradient(180deg, var(--red-50) 0%, var(--white) 100%);
+    border-bottom: 1px solid var(--gray-200);
     align-items: flex-start;
-    position: relative;
+    flex-wrap: wrap;
 }
 
-/* Marco de la foto */
+/* --- Foto --- */
 .photo-frame {
+    width: 100px;
+    height: 130px;
     flex-shrink: 0;
-    width: 200px;
-    height: 250px;
-    border-radius: 10px;
+    border-radius: var(--radius-md);
     overflow: hidden;
-    border: 3px solid var(--border-light);
-    box-shadow:
-        0 2px 8px rgba(0,0,0,0.08),
-        inset 0 0 0 1px rgba(0,0,0,0.04);
-    background: #f0f0f5;
-    position: relative;
-}
-
-/* Sutil marca de agua de cruz médica */
-.photo-frame::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background:
-        linear-gradient(transparent 48%, rgba(192,33,42,0.04) 48%, rgba(192,33,42,0.04) 52%, transparent 52%),
-        linear-gradient(90deg, transparent 48%, rgba(192,33,42,0.04) 48%, rgba(192,33,42,0.04) 52%, transparent 52%);
-    pointer-events: none;
-    opacity: 0.5;
+    border: 2px solid var(--white);
+    box-shadow: var(--shadow-md);
+    background: var(--gray-100);
+    order: 0;
 }
 
 .patient-photo {
@@ -279,85 +260,116 @@ button {
     display: block;
 }
 
-/* Info del paciente */
+/* --- Info del paciente (header-info) --- */
 .header-info {
     flex: 1;
     min-width: 0;
+    order: 1;
 }
 
 .patient-name {
     font-family: var(--font-display);
-    font-size: 1.55rem;
+    font-size: 18px;
     font-weight: 800;
-    color: var(--text-primary);
-    line-height: 1.2;
-    margin-bottom: 16px;
-    letter-spacing: -0.02em;
+    color: var(--red-800);
+    line-height: 1.25;
+    margin-bottom: 12px;
+    letter-spacing: -0.01em;
 }
 
+/* Grid de información */
 .info-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px 20px;
+    grid-template-columns: 1fr;
+    gap: 6px;
 }
 
 .info-item {
     display: flex;
     flex-direction: column;
     gap: 1px;
+    padding: 5px 0;
+    border-bottom: 1px solid var(--gray-100);
+}
+
+.info-item:last-child {
+    border-bottom: none;
 }
 
 .info-label {
-    font-size: 0.68rem;
+    font-size: 10px;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--text-muted);
+    letter-spacing: 0.06em;
+    color: var(--gray-400);
+    line-height: 1;
 }
 
 .info-value {
-    font-size: 0.88rem;
+    font-size: 13px;
     font-weight: 600;
-    color: var(--text-primary);
+    color: var(--gray-800);
     line-height: 1.35;
+    word-break: break-word;
 }
 
-/* Badge de grupo sanguíneo */
+/* --- Badge de sangre --- */
 .blood-badge {
-    flex-shrink: 0;
-    width: 72px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 2px;
-    padding: 14px 8px;
-    background: linear-gradient(145deg, var(--emergency-red), var(--emergency-red-dark));
-    border-radius: 12px;
-    box-shadow: 0 4px 16px rgba(192,33,42,0.3);
-    align-self: stretch;
-    min-height: 120px;
+    width: 72px;
+    height: 80px;
+    background: var(--red-600);
+    border-radius: var(--radius-md);
+    color: var(--white);
+    box-shadow: var(--shadow-red);
+    flex-shrink: 0;
+    order: 2;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid var(--red-800);
+}
+
+.blood-badge::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+    animation: blood-shine 3s ease-in-out infinite;
+}
+
+@keyframes blood-shine {
+    0%, 100% { transform: translate(-20%, -20%); }
+    50% { transform: translate(20%, 20%); }
 }
 
 .blood-label {
-    font-size: 0.55rem;
+    font-size: 8px;
     font-weight: 700;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.75);
+    opacity: 0.85;
+    position: relative;
+    z-index: 1;
 }
 
 .blood-type {
     font-family: var(--font-display);
-    font-size: 2.6rem;
+    font-size: 32px;
     font-weight: 900;
-    color: #fff;
     line-height: 1;
-    letter-spacing: -0.02em;
+    position: relative;
+    z-index: 1;
+    margin-top: 2px;
 }
 
 .blood-type sup {
-    font-size: 1.6rem;
+    font-size: 18px;
     font-weight: 800;
 }
 
@@ -365,43 +377,70 @@ button {
    CUERPO MÉDICO
    ============================================================ */
 .card-body {
-    padding: 0 28px;
+    padding: 12px 16px 16px;
     display: flex;
     flex-direction: column;
     gap: 12px;
 }
 
-/* Fila de dos columnas */
-.med-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-}
-
-/* Sección médica genérica */
+/* --- Sección genérica --- */
 .med-section {
-    border-radius: 10px;
-    padding: 14px 16px;
-    border-left: 4px solid var(--border-medium);
-    background: #fff;
+    background: var(--white);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--gray-200);
+    overflow: hidden;
     transition: box-shadow 0.2s ease;
 }
 
 .med-section:hover {
-    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    box-shadow: var(--shadow-sm);
 }
 
+/* Variantes de sección */
+.med-section--critical {
+    border-color: var(--red-400);
+    border-left: 4px solid var(--red-600);
+    background: linear-gradient(135deg, var(--red-50) 0%, var(--white) 40%);
+}
+
+.med-section--warning {
+    border-color: var(--amber-300);
+    border-left: 4px solid var(--amber-500);
+    background: linear-gradient(135deg, var(--amber-50) 0%, var(--white) 40%);
+}
+
+.med-section--info {
+    border-color: var(--blue-300);
+    border-left: 4px solid var(--blue-500);
+    background: linear-gradient(135deg, var(--blue-50) 0%, var(--white) 40%);
+}
+
+.med-section--danger {
+    border-color: var(--orange-400);
+    border-left: 4px solid var(--orange-600);
+    background: linear-gradient(135deg, var(--orange-50) 0%, var(--white) 40%);
+}
+
+.med-section--note {
+    border-color: var(--gray-300);
+    border-left: 4px solid var(--gray-500);
+    background: linear-gradient(135deg, var(--gray-50) 0%, var(--white) 40%);
+}
+
+/* --- Encabezado de sección --- */
 .med-head {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 10px;
+    padding: 10px 12px;
+    gap: 8px;
 }
 
 .med-title-row {
     display: flex;
     align-items: center;
     gap: 8px;
+    min-width: 0;
 }
 
 .med-icon {
@@ -410,201 +449,131 @@ button {
     flex-shrink: 0;
 }
 
+.med-section--critical .med-icon { color: var(--red-600); }
+.med-section--warning .med-icon { color: var(--amber-600); }
+.med-section--info .med-icon    { color: var(--blue-600); }
+.med-section--danger .med-icon  { color: var(--orange-600); }
+.med-section--note .med-icon    { color: var(--gray-500); }
+
 .med-title-row h2 {
     font-family: var(--font-display);
-    font-size: 0.85rem;
+    font-size: 13px;
     font-weight: 700;
-    letter-spacing: -0.01em;
+    color: var(--gray-800);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-.med-list {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.med-list li {
-    font-size: 0.82rem;
-    color: var(--text-secondary);
-    line-height: 1.45;
-    padding-left: 14px;
-    position: relative;
-}
-
-.med-list li::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 8px;
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background: var(--border-medium);
-}
-
-.med-list li strong {
-    color: var(--text-primary);
-    font-weight: 600;
-}
-
-/* --- Variante: Crítico (alergias) --- */
-.med-section--critical {
-    border-left-color: var(--critical-border);
-    background: var(--critical-bg);
-}
-
-.med-section--critical .med-icon {
-    stroke: var(--critical-border);
-}
-
-.med-section--critical .med-title-row h2 {
-    color: var(--critical-text);
-}
-
-.med-section--critical .med-list li::before {
-    background: var(--critical-border);
-}
-
-/* --- Variante: Warning (enfermedades) --- */
-.med-section--warning {
-    border-left-color: var(--warning-border);
-    background: var(--warning-bg);
-}
-
-.med-section--warning .med-icon {
-    stroke: var(--warning-border);
-}
-
-.med-section--warning .med-title-row h2 {
-    color: var(--warning-text);
-}
-
-.med-section--warning .med-list li::before {
-    background: var(--warning-border);
-}
-
-/* --- Variante: Info (medicamentos) --- */
-.med-section--info {
-    border-left-color: var(--info-border);
-    background: var(--info-bg);
-}
-
-.med-section--info .med-icon {
-    stroke: var(--info-border);
-}
-
-.med-section--info .med-title-row h2 {
-    color: var(--info-text);
-}
-
-.med-section--info .med-list li::before {
-    background: var(--info-border);
-}
-
-/* --- Variante: Danger (restricciones) --- */
-.med-section--danger {
-    border-left-color: var(--danger-border);
-    background: var(--danger-bg);
-}
-
-.med-section--danger .med-icon {
-    stroke: var(--danger-border);
-}
-
-.med-section--danger .med-title-row h2 {
-    color: var(--danger-text);
-}
-
-.med-section--danger .med-list li::before {
-    background: var(--danger-border);
-}
-
-.med-section--danger .med-list li {
-    color: var(--danger-text);
-    font-weight: 500;
-}
-
-/* --- Variante: Note (observaciones) --- */
-.med-section--note {
-    border-left-color: var(--note-border);
-    background: var(--note-bg);
-}
-
-.med-section--note .med-icon {
-    stroke: var(--note-border);
-}
-
-.med-section--note .med-title-row h2 {
-    color: var(--note-text);
-}
-
-.med-section--note .med-list li::before {
-    background: var(--note-border);
-}
-
-/* ============================================================
-   TAGS / BADGES
-   ============================================================ */
+/* --- Tags --- */
 .tag {
-    display: inline-flex;
-    align-items: center;
-    padding: 2px 8px;
+    display: inline-block;
+    padding: 2px 7px;
     border-radius: 4px;
-    font-size: 0.62rem;
+    font-size: 9px;
     font-weight: 700;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .tag--critical {
-    background: var(--critical-border);
-    color: #fff;
+    background: var(--red-600);
+    color: var(--white);
+    animation: tag-pulse 2s ease-in-out infinite;
+}
+
+@keyframes tag-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.75; }
 }
 
 .tag--danger {
-    background: var(--danger-border);
-    color: #fff;
+    background: var(--orange-600);
+    color: var(--white);
 }
 
-/* ============================================================
-   BOTÓN COPIAR
-   ============================================================ */
+/* --- Botón copiar --- */
 .copy-btn {
-    width: 30px;
-    height: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 6px;
-    color: var(--copy-gray);
+    width: 30px;
+    height: 30px;
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-sm);
+    background: var(--white);
+    color: var(--gray-400);
+    cursor: pointer;
     transition: all 0.2s ease;
     flex-shrink: 0;
 }
 
-.copy-btn svg {
-    width: 15px;
-    height: 15px;
-}
-
 .copy-btn:hover {
-    background: rgba(0,0,0,0.06);
-    color: var(--text-primary);
+    color: var(--blue-600);
+    border-color: var(--blue-300);
+    background: var(--blue-50);
 }
 
 .copy-btn:active {
     transform: scale(0.9);
 }
 
-.copy-btn.copied {
-    color: #16a34a;
+.copy-btn svg {
+    width: 14px;
+    height: 14px;
+}
+
+/* --- Lista médica --- */
+.med-list {
+    list-style: none;
+    padding: 0 12px 10px;
+}
+
+.med-list li {
+    font-size: 12.5px;
+    color: var(--gray-700);
+    padding: 4px 0;
+    border-top: 1px solid var(--gray-100);
+    line-height: 1.45;
+}
+
+.med-list li:first-child {
+    border-top: none;
+}
+
+.med-list li strong {
+    color: var(--gray-900);
+    font-weight: 600;
+}
+
+.med-section--critical .med-list li strong {
+    color: var(--red-800);
+}
+
+.med-section--danger .med-list li {
+    color: var(--orange-700);
+}
+
+.med-section--danger .med-list li strong {
+    color: var(--orange-700);
+}
+
+/* --- Fila par (2 columnas) --- */
+.med-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
 }
 
 /* ============================================================
-   SECCIÓN ICE
+   CONTACTOS ICE
    ============================================================ */
 .card-ice {
-    padding: 20px 28px;
-    border-top: 1px solid var(--border-light);
+    padding: 16px;
+    border-top: 2px solid var(--red-200);
+    background: linear-gradient(180deg, var(--white) 0%, var(--red-50) 100%);
 }
 
 .ice-heading {
@@ -612,29 +581,29 @@ button {
     align-items: center;
     gap: 8px;
     font-family: var(--font-display);
-    font-size: 0.85rem;
+    font-size: 15px;
     font-weight: 700;
-    color: var(--text-primary);
+    color: var(--red-800);
     margin-bottom: 14px;
-    letter-spacing: -0.01em;
 }
 
 .ice-heading svg {
     width: 18px;
     height: 18px;
-    color: var(--emergency-red);
+    color: var(--red-600);
 }
 
+/* --- Contacto individual --- */
 .ice-contact {
     display: flex;
     align-items: center;
-    gap: 14px;
-    padding: 14px 16px;
-    border-radius: 10px;
-    border: 1px solid var(--border-light);
-    background: #fafafc;
+    gap: 12px;
+    padding: 12px;
+    background: var(--white);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--gray-200);
     margin-bottom: 10px;
-    transition: all 0.2s ease;
+    transition: box-shadow 0.2s ease;
 }
 
 .ice-contact:last-child {
@@ -642,15 +611,16 @@ button {
 }
 
 .ice-contact:hover {
-    border-color: var(--border-medium);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    box-shadow: var(--shadow-md);
+    border-color: var(--red-300);
 }
 
+/* Avatar */
 .ice-avatar {
     width: 44px;
     height: 44px;
-    border-radius: 10px;
-    background: linear-gradient(135deg, #1e40af, #3b82f6);
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--red-600), var(--red-800));
     display: flex;
     align-items: center;
     justify-content: center;
@@ -659,15 +629,17 @@ button {
 
 .ice-avatar span {
     font-family: var(--font-display);
-    font-size: 0.82rem;
+    font-size: 14px;
     font-weight: 700;
-    color: #fff;
+    color: var(--white);
+    letter-spacing: 0.02em;
 }
 
 .ice-avatar--alt {
-    background: linear-gradient(135deg, #7c3aed, #a78bfa);
+    background: linear-gradient(135deg, var(--blue-600), var(--blue-900));
 }
 
+/* Info del contacto */
 .ice-info {
     flex: 1;
     min-width: 0;
@@ -678,266 +650,565 @@ button {
 
 .ice-name {
     font-family: var(--font-display);
-    font-size: 0.88rem;
+    font-size: 13px;
     font-weight: 700;
-    color: var(--text-primary);
-    line-height: 1.3;
+    color: var(--gray-900);
+    line-height: 1.25;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .ice-role {
-    font-size: 0.72rem;
-    color: var(--text-muted);
+    font-size: 11px;
     font-weight: 500;
+    color: var(--gray-500);
+    text-transform: capitalize;
 }
 
 .ice-phone {
-    font-size: 0.84rem;
+    font-size: 12px;
     font-weight: 600;
-    color: var(--text-primary);
+    color: var(--gray-700);
     letter-spacing: 0.01em;
 }
 
+/* Botones de acción ICE */
 .ice-actions {
     display: flex;
-    gap: 8px;
+    gap: 6px;
     flex-shrink: 0;
 }
 
-/* ============================================================
-   BOTONES ICE — Llamar y WhatsApp
-   ============================================================ */
 .btn-ice {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    padding: 8px 14px;
-    border-radius: 8px;
-    font-size: 0.76rem;
+    gap: 4px;
+    padding: 7px 10px;
+    border-radius: var(--radius-sm);
+    font-size: 11px;
     font-weight: 600;
+    font-family: var(--font-body);
+    cursor: pointer;
+    border: none;
     transition: all 0.2s ease;
-}
-
-.btn-ice svg {
-    width: 16px;
-    height: 16px;
-}
-
-.btn-call {
-    background: rgba(26, 115, 232, 0.08);
-    color: var(--call-blue);
-    border: 1px solid rgba(26, 115, 232, 0.15);
-}
-
-.btn-call:hover {
-    background: rgba(26, 115, 232, 0.15);
-    border-color: rgba(26, 115, 232, 0.3);
-    box-shadow: 0 2px 8px rgba(26, 115, 232, 0.15);
-}
-
-.btn-wa {
-    background: rgba(37, 211, 102, 0.08);
-    color: #128c3e;
-    border: 1px solid rgba(37, 211, 102, 0.15);
-}
-
-.btn-wa:hover {
-    background: rgba(37, 211, 102, 0.15);
-    border-color: rgba(37, 211, 102, 0.3);
-    box-shadow: 0 2px 8px rgba(37, 211, 102, 0.15);
+    white-space: nowrap;
 }
 
 .btn-ice:active {
-    transform: scale(0.96);
+    transform: scale(0.95);
+}
+
+.btn-ice svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+}
+
+.btn-call {
+    background: var(--red-50);
+    color: var(--red-700);
+    border: 1px solid var(--red-200);
+}
+
+.btn-call:hover {
+    background: var(--red-100);
+    border-color: var(--red-400);
+}
+
+.btn-wa {
+    background: var(--green-wa);
+    color: var(--white);
+}
+
+.btn-wa:hover {
+    background: var(--green-wa-dark);
 }
 
 /* ============================================================
-   PIE DE TARJETA
+   FOOTER
    ============================================================ */
 .card-footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 14px 28px;
-    border-top: 1px solid var(--border-light);
-    background: #fafafc;
+    padding: 12px 16px;
+    background: var(--gray-900);
+    text-align: center;
 }
 
 .footer-notice {
-    font-size: 0.68rem;
-    color: var(--text-muted);
+    font-size: 10px;
     font-weight: 500;
-}
-
-.footer-time {
-    font-size: 0.68rem;
-    color: var(--text-muted);
-    font-weight: 500;
-    font-variant-numeric: tabular-nums;
+    color: var(--gray-400);
+    letter-spacing: 0.04em;
 }
 
 /* ============================================================
-   TOAST NOTIFICATIONS
+   TOAST CONTAINER
    ============================================================ */
 #toast-container {
     position: fixed;
-    bottom: 24px;
-    right: 24px;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 8px;
-    z-index: 9999;
     pointer-events: none;
 }
 
-.toast {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 12px 18px;
-    border-radius: 10px;
-    background: var(--text-primary);
-    color: #fff;
-    font-size: 0.82rem;
-    font-weight: 500;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
-    pointer-events: auto;
-    animation: toast-in 0.35s ease forwards;
-    max-width: 340px;
-}
-
-.toast.toast-out {
-    animation: toast-out 0.3s ease forwards;
-}
-
-.toast-icon {
-    width: 18px;
-    height: 18px;
-    flex-shrink: 0;
-    color: #4ade80;
-}
-
-@keyframes toast-in {
-    from {
-        opacity: 0;
-        transform: translateY(16px) scale(0.95);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-}
-
-@keyframes toast-out {
-    from {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-    to {
-        opacity: 0;
-        transform: translateY(8px) scale(0.95);
-    }
-}
-
 /* ============================================================
-   RESPONSIVE
+   RESPONSIVE — Tablet (≥ 480px)
    ============================================================ */
-@media (max-width: 720px) {
+@media (min-width: 480px) {
     .page-wrapper {
-        padding: 16px 10px 32px;
+        padding: 24px;
+    }
+
+    body {
+        font-size: 15px;
     }
 
     .card-header {
-        flex-wrap: wrap;
-        gap: 16px;
-        padding: 20px 18px 18px;
-    }
-
-    .photo-frame {
-        width: 140px;
-        height: 175px;
-    }
-
-    .patient-name {
-        font-size: 1.25rem;
-    }
-
-    .info-grid {
-        grid-template-columns: 1fr;
-        gap: 6px;
-    }
-
-    .blood-badge {
-        width: auto;
-        flex-direction: row;
-        gap: 6px;
-        padding: 10px 18px;
-        min-height: auto;
-        align-self: flex-start;
-    }
-
-    .blood-type {
-        font-size: 1.8rem;
-    }
-
-    .blood-type sup {
-        font-size: 1.1rem;
-    }
-
-    .card-body {
-        padding: 0 18px;
-    }
-
-    .med-row {
-        grid-template-columns: 1fr;
-    }
-
-    .card-ice {
-        padding: 16px 18px;
-    }
-
-    .ice-contact {
-        flex-wrap: wrap;
-    }
-
-    .ice-actions {
-        width: 100%;
-        padding-left: 58px;
-    }
-
-    .btn-ice {
-        flex: 1;
-        justify-content: center;
-    }
-
-    .card-footer {
-        flex-direction: column;
-        gap: 4px;
-        padding: 12px 18px;
-        text-align: center;
-    }
-}
-
-@media (max-width: 420px) {
-    html {
-        font-size: 14px;
+        padding: 24px 20px;
+        gap: 20px;
+        flex-wrap: nowrap;
+        align-items: flex-start;
     }
 
     .photo-frame {
         width: 120px;
-        height: 150px;
+        height: 155px;
+        border-radius: var(--radius-lg);
+    }
+
+    .patient-name {
+        font-size: 22px;
+        margin-bottom: 14px;
+    }
+
+    /* Grid info: 2 columnas en tablet */
+    .info-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 8px 16px;
+    }
+
+    .info-item {
+        padding: 6px 0;
+    }
+
+    .info-label {
+        font-size: 10px;
+    }
+
+    .info-value {
+        font-size: 13.5px;
+    }
+
+    .blood-badge {
+        width: 80px;
+        height: 90px;
+        align-self: flex-start;
+    }
+
+    .blood-type {
+        font-size: 36px;
+    }
+
+    .blood-type sup {
+        font-size: 20px;
+    }
+
+    .card-body {
+        padding: 16px 20px 20px;
+        gap: 14px;
+    }
+
+    .med-head {
+        padding: 12px 14px;
+    }
+
+    .med-title-row h2 {
+        font-size: 14px;
+    }
+
+    .med-list {
+        padding: 0 14px 12px;
+    }
+
+    .med-list li {
+        font-size: 13px;
+    }
+
+    .med-row {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
+
+    .card-ice {
+        padding: 20px;
+    }
+
+    .ice-contact {
+        padding: 14px;
+    }
+
+    .btn-ice {
+        padding: 8px 14px;
+        font-size: 12px;
+    }
+}
+
+/* ============================================================
+   RESPONSIVE — Desktop (≥ 640px)
+   ============================================================ */
+@media (min-width: 640px) {
+    .page-wrapper {
+        padding: 40px 20px;
+    }
+
+    .card-strip {
+        padding: 14px 24px;
+    }
+
+    .strip-left {
+        font-size: 14px;
+        letter-spacing: 0.1em;
+    }
+
+    .strip-print {
+        padding: 8px 16px;
+        font-size: 13px;
+    }
+
+    .strip-print svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    .card-header {
+        padding: 28px 28px;
+        gap: 24px;
+    }
+
+    .photo-frame {
+        width: 140px;
+        height: 180px;
+    }
+
+    .patient-name {
+        font-size: 26px;
+        margin-bottom: 16px;
+    }
+
+    .info-grid {
+        gap: 10px 20px;
+    }
+
+    .info-label {
+        font-size: 10.5px;
+    }
+
+    .info-value {
+        font-size: 14px;
+    }
+
+    .blood-badge {
+        width: 88px;
+        height: 100px;
+        border-radius: var(--radius-lg);
+    }
+
+    .blood-type {
+        font-size: 40px;
+    }
+
+    .blood-type sup {
+        font-size: 22px;
+    }
+
+    .card-body {
+        padding: 20px 28px 24px;
+        gap: 16px;
+    }
+
+    .med-section {
+        border-radius: var(--radius-lg);
+    }
+
+    .med-head {
+        padding: 14px 16px;
+    }
+
+    .med-title-row h2 {
+        font-size: 15px;
+    }
+
+    .med-icon {
+        width: 20px;
+        height: 20px;
+    }
+
+    .med-list {
+        padding: 0 16px 14px;
+    }
+
+    .med-list li {
+        font-size: 13.5px;
+        padding: 5px 0;
+    }
+
+    .card-ice {
+        padding: 24px 28px;
+    }
+
+    .ice-heading {
+        font-size: 17px;
+        margin-bottom: 16px;
+    }
+
+    .ice-heading svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .ice-contact {
+        padding: 16px;
+        gap: 16px;
+    }
+
+    .ice-avatar {
+        width: 50px;
+        height: 50px;
+    }
+
+    .ice-avatar span {
+        font-size: 15px;
+    }
+
+    .ice-name {
+        font-size: 14px;
+    }
+
+    .ice-role {
+        font-size: 12px;
+    }
+
+    .ice-phone {
+        font-size: 13px;
+    }
+
+    .btn-ice {
+        padding: 9px 16px;
+        font-size: 13px;
+        border-radius: var(--radius-sm);
+    }
+
+    .btn-ice svg {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+/* ============================================================
+   RESPONSIVE — Desktop grande (≥ 900px)
+   ============================================================ */
+@media (min-width: 900px) {
+    .page-wrapper {
+        padding: 48px 24px;
+    }
+
+    .card-header {
+        padding: 32px 32px;
+    }
+
+    .patient-name {
+        font-size: 28px;
+    }
+
+    .info-grid {
+        gap: 12px 24px;
+    }
+
+    .info-value {
+        font-size: 14.5px;
+    }
+
+    .card-body {
+        padding: 24px 32px 28px;
+    }
+
+    .med-head {
+        padding: 16px 18px;
+    }
+
+    .med-list {
+        padding: 0 18px 16px;
+    }
+
+    .card-ice {
+        padding: 28px 32px;
+    }
+
+    .ice-contact {
+        padding: 18px;
+    }
+}
+
+/* ============================================================
+   PANTALLAS MUY PEQUEÑAS (≤ 360px)
+   ============================================================ */
+@media (max-width: 360px) {
+    .page-wrapper {
+        padding: 8px;
+    }
+
+    .card-strip {
+        padding: 10px 12px;
+    }
+
+    .strip-left {
+        font-size: 11px;
+        letter-spacing: 0.05em;
     }
 
     .strip-print span {
         display: none;
     }
+
+    .strip-print {
+        padding: 6px;
+    }
+
+    .card-header {
+        padding: 14px 12px;
+        gap: 12px;
+    }
+
+    .photo-frame {
+        width: 80px;
+        height: 105px;
+        border-radius: var(--radius-sm);
+    }
+
+    .patient-name {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+
+    .info-label {
+        font-size: 9px;
+    }
+
+    .info-value {
+        font-size: 12px;
+    }
+
+    .blood-badge {
+        width: 60px;
+        height: 68px;
+        border-radius: var(--radius-sm);
+    }
+
+    .blood-label {
+        font-size: 7px;
+    }
+
+    .blood-type {
+        font-size: 26px;
+    }
+
+    .blood-type sup {
+        font-size: 14px;
+    }
+
+    .card-body {
+        padding: 10px 12px 14px;
+        gap: 10px;
+    }
+
+    .med-head {
+        padding: 8px 10px;
+    }
+
+    .med-title-row {
+        gap: 6px;
+    }
+
+    .med-title-row h2 {
+        font-size: 12px;
+    }
+
+    .tag {
+        font-size: 8px;
+        padding: 1px 5px;
+    }
+
+    .med-list {
+        padding: 0 10px 8px;
+    }
+
+    .med-list li {
+        font-size: 11.5px;
+    }
+
+    .card-ice {
+        padding: 12px;
+    }
+
+    .ice-heading {
+        font-size: 13px;
+        margin-bottom: 10px;
+    }
+
+    .ice-contact {
+        padding: 10px;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .ice-avatar {
+        width: 38px;
+        height: 38px;
+    }
+
+    .ice-avatar span {
+        font-size: 12px;
+    }
+
+    .ice-name {
+        font-size: 12px;
+    }
+
+    .ice-role {
+        font-size: 10px;
+    }
+
+    .ice-phone {
+        font-size: 11px;
+    }
+
+    .ice-actions {
+        width: 100%;
+        justify-content: stretch;
+        gap: 6px;
+    }
+
+    .btn-ice {
+        flex: 1;
+        justify-content: center;
+        padding: 8px 8px;
+        font-size: 11px;
+    }
 }
 
 /* ============================================================
-   IMPRESIÓN
+   PRINT
    ============================================================ */
 @media print {
     body {
-        background: #fff;
+        background: var(--white);
+        font-size: 11pt;
     }
 
     .page-wrapper {
@@ -946,18 +1217,27 @@ button {
 
     .med-card {
         box-shadow: none;
-        border: 2px solid #333;
+        border: 2px solid var(--gray-300);
         border-radius: 0;
         max-width: 100%;
     }
 
-    .med-card:hover {
-        transform: none;
-        box-shadow: none;
+    .card-strip {
+        background: var(--gray-900) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
     }
 
     .strip-print {
         display: none !important;
+    }
+
+    .holo-line {
+        display: none;
+    }
+
+    .pulse-dot::before {
+        display: none;
     }
 
     .copy-btn {
@@ -965,63 +1245,14 @@ button {
     }
 
     .btn-ice {
-        display: none !important;
-    }
-
-    #toast-container {
-        display: none !important;
-    }
-
-    .card-header {
-        padding: 16px;
-    }
-
-    .photo-frame {
-        width: 130px;
-        height: 162px;
-        border: 2px solid #333;
-        box-shadow: none;
-    }
-
-    .card-body {
-        padding: 0 16px;
-        gap: 8px;
-    }
-
-    .med-section {
-        break-inside: avoid;
-        border: 1px solid #ccc;
-        border-left-width: 4px;
-    }
-
-    .card-ice {
-        padding: 12px 16px;
-    }
-
-    .ice-contact {
-        border: 1px solid #ccc;
-        background: #fff;
-    }
-
-    .card-footer {
-        padding: 10px 16px;
-        border-top: 1px solid #ccc;
-        background: #fff;
-    }
-
-    .holo-line {
-        print-color-adjust: exact;
+        border: 1px solid var(--gray-400) !important;
         -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
     }
 
     .blood-badge {
-        print-color-adjust: exact;
         -webkit-print-color-adjust: exact;
-    }
-
-    .card-strip {
         print-color-adjust: exact;
-        -webkit-print-color-adjust: exact;
     }
 
     .med-section--critical,
@@ -1029,34 +1260,40 @@ button {
     .med-section--info,
     .med-section--danger,
     .med-section--note {
-        print-color-adjust: exact;
         -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .tag--critical,
+    .tag--danger {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        animation: none;
+    }
+
+    .card-footer {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
     }
 }
 
 /* ============================================================
-   ANIMACIONES REDUCIDAS
+   REDUCED MOTION
    ============================================================ */
 @media (prefers-reduced-motion: reduce) {
+    .pulse-dot,
     .pulse-dot::before,
-    .pulse-dot::after {
+    .holo-line,
+    .tag--critical,
+    .blood-badge::before {
         animation: none;
     }
 
-    .holo-line {
-        animation: none;
-    }
-
-    .med-card {
+    .copy-btn,
+    .strip-print,
+    .btn-ice,
+    .ice-contact,
+    .med-section {
         transition: none;
-    }
-
-    .toast {
-        animation: none;
-        opacity: 1;
-    }
-
-    .toast.toast-out {
-        animation: none;
     }
 }
