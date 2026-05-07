@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tarjeta médica de emergencia — María Camila Rodríguez Pérez">
+    <title>Emergencia — María Camila Rodríguez Pérez</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="stylesheet" href="/static/css/emergency-card.css">
+</head>
+
+<body>
+
+    <div class="emergency-page">
+
+        <!-- Barra superior -->
+        <div class="card-topbar">
+            <div class="card-topbar-logo">
+                <svg viewBox="0 0 36 36" fill="none" aria-hidden="true">
+                    <rect width="36" height="36" rx="10" fill="currentColor" opacity="0.1" />
+                    <path d="M18 8C18 8 12 14 12 18C12 21.3 14.7 24 18 24C21.3 24 24 21.3 24 18C24 14 18 8 18 8Z"
+                        fill="currentColor" />
+                    <path d="M15 17H21M18 14V20" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+                </svg>
+                <span>MedCard</span>
+            </div>
+            <div class="card-topbar-actions">
+                <button class="btn btn-ghost btn-sm" data-action="print" aria-label="Imprimir tarjeta">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path
+                            d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" />
+                        <rect x="6" y="14" width="12" height="8" />
+                    </svg>
+                    Imprimir
+                </button>
+            </div>
+        </div>
+
+        <!-- ========================================
+         TARJETA DE EMERGENCIA
+         Toda la información vive en el HTML.
+         El JS lee dinámicamente desde aquí.
+         ======================================== -->
+        <article class="emergency-card" aria-label="Tarjeta médica de emergencia">
+
+            <!-- =====================
+           ENCABEZADO
+           ===================== -->
+            <header class="card-header">
+                <div class="card-header-content">
+                    <div class="patient-photo" aria-hidden="true">
+                        <img src="/static/img/JesusManuelEspitiaGuzman.png" alt="">
+                    </div>
+                    <div class="patient-header-info">
+                        <h1 class="patient-name">María Camila Rodríguez Pérez</h1>
+                        <div class="patient-meta">
+                            <span class="patient-meta-item">
+                                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linecap="round">
+                                    <rect x="2" y="3" width="12" height="10" rx="1" />
+                                    <path d="M2 6h12" />
+                                </svg>
+                                CC 1.024.567.890
+                            </span>
+                            <span class="patient-meta-item">
+                                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linecap="round">
+                                    <rect x="1" y="5" width="14" height="8" rx="1" />
+                                    <path d="M5 5V3a3 3 0 0 1 6 0v2" />
+                                </svg>
+                                C3-2024-001234
+                            </span>
+                            <span class="patient-meta-item">
+                                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linecap="round">
+                                    <path d="M8 1v14M1 8h14" />
+                                </svg>
+                                EPS Sanitas
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="emergency-status" aria-label="Estado de emergencia activo">
+                    <span class="emergency-pulse"></span>
+                    Emergencia
+                </div>
+            </header>
+
+            <!-- =====================
+           SECCIÓN 1 — IDENTIFICACIÓN
+           ===================== -->
+            <section class="card-section" aria-label="Identificación">
+                <div class="section-label">
+                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"
+                        stroke-linecap="round">
+                        <rect x="2" y="3" width="12" height="10" rx="1" />
+                        <path d="M2 6h12M5 3v10" />
+                    </svg>
+                    Identificación
+                    <span class="section-label-line"></span>
+                </div>
+                <div class="id-grid">
+                    <div class="id-field">
+                        <span class="id-field-label">Cédula</span>
+                        <span class="id-field-value" id="field-cedula">1.024.567.890</span>
+                        <button class="id-field-copy" data-copy-target="field-cedula" aria-label="Copiar cédula">
+                            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="5" y="5" width="9" height="9" rx="1" />
+                                <path d="M5 11H3a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v2" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="id-field">
+                        <span class="id-field-label">Licencia de conducción</span>
+                        <span class="id-field-value" id="field-licencia">C3-2024-001234</span>
+                        <button class="id-field-copy" data-copy-target="field-licencia" aria-label="Copiar licencia">
+                            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="5" y="5" width="9" height="9" rx="1" />
+                                <path d="M5 11H3a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v2" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="id-field">
+                        <span class="id-field-label">Fecha de nacimiento</span>
+                        <span class="id-field-value" id="field-nacimiento">15 de marzo de 1992</span>
+                        <button class="id-field-copy" data-copy-target="field-nacimiento"
+                            aria-label="Copiar fecha de nacimiento">
+                            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="5" y="5" width="9" height="9" rx="1" />
+                                <path d="M5 11H3a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v2" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="id-field">
+                        <span class="id-field-label">SOAT</span>
+                        <span class="id-field-value" id="field-soat">9876543210987 — Seguros Bolívar</span>
+                        <button class="id-field-copy" data-copy-target="field-soat" aria-label="Copiar SOAT">
+                            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="5" y="5" width="9" height="9" rx="1" />
+                                <path d="M5 11H3a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v2" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="id-field id-field--wide">
+                        <span class="id-field-label">EPS</span>
+                        <span class="id-field-value" id="field-eps">Sanitas — Nivel 3 — Carnet: SAN-2024-884512</span>
+                        <button class="id-field-copy" data-copy-target="field-eps" aria-label="Copiar EPS">
+                            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="5" y="5" width="9" height="9" rx="1" />
+                                <path d="M5 11H3a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v2" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- =====================
+           SECCIÓN 2 — INFORMACIÓN MÉDICA VITAL
+           Sección más importante visualmente
+           ===================== -->
+            <section class="card-section card-section--vital" aria-label="Información médica vital">
+                <div class="section-label section-label--vital">
+                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"
+                        stroke-linecap="round">
+                        <path d="M8 14s-5.5-4-5.5-7.5A3.5 3.5 0 0 1 8 4.5a3.5 3.5 0 0 1 5.5 2c0 3.5-5.5 7.5-5.5 7.5z" />
+                    </svg>
+                    Información Médica Vital
+                    <span class="section-label-line"></span>
+                </div>
+
+                <!-- Grupo sanguíneo — Elemento más prominente -->
+                <div class="blood-type-block" aria-label="Grupo sanguíneo O positivo">
+                    <div class="blood-type-badge">
+                        <span class="blood-type-letter">O</span>
+                        <span class="blood-type-rh">+</span>
+                    </div>
+                    <div class="blood-type-info">
+                        <span class="blood-type-label">Grupo sanguíneo</span>
+                        <span class="blood-type-detail">Tipo O — Factor Rh Positivo</span>
+                    </div>
+                    <button class="id-field-copy" data-copy-target="blood-type-text"
+                        aria-label="Copiar grupo sanguíneo">
+                        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="5" y="5" width="9" height="9" rx="1" />
+                            <path d="M5 11H3a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v2" />
+                        </svg>
+                    </button>
+                    <span class="sr-only" id="blood-type-text">O+</span>
+                </div>
+
+                <!-- Grid de campos médicos -->
+                <div class="medical-grid">
+
+                    <!-- Alergias -->
+                    <div class="medical-field medical-field--alert" data-medical-type="allergy">
+                        <div class="medical-field-header">
+                            <span class="medical-field-icon medical-field-icon--alert">
+                                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linecap="round">
+                                    <path d="M10 2L2 18h16L10 2z" />
+                                    <path d="M10 8v4M10 14v0.5" />
+                                </svg>
+                            </span>
+                            <span class="medical-field-label">Alergias</span>
+                            <span class="medical-field-tag medical-field-tag--alert">CRÍTICO</span>
+                        </div>
+                        <ul class="medical-field-list">
+                            <li>Penicilina — Reacción anafiláctica</li>
+                            <li>Latex — Urticaria severa</li>
+                            <li>Contraste yodado — Riesgo moderado</li>
+                        </ul>
+                        <button class="id-field-copy" data-copy-target="field-alergias" aria-label="Copiar alergias">
+                            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="5" y="5" width="9" height="9" rx="1" />
+                                <path d="M5 11H3a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v2" />
+                            </svg>
+                        </button>
+                        <span class="sr-only" id="field-alergias">Penicilina (anafilaxis), Latex (urticaria severa),
+                            Contraste yodado (riesgo moderado)</span>
+                    </div>
+
+                    <!-- Enfermedades -->
+                    <div class="medical-field medical-field--warning" data-medical-type="disease">
+                        <div class="medical-field-header">
+                            <span class="medical-field-icon medical-field-icon--warning">
+                                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linecap="round">
+                                    <circle cx="10" cy="10" r="8" />
+                                    <path d="M10 6v5M10 13.5v0.5" />
+                                </svg>
+                            </span>
+                            <span class="medical-field-label">Enfermedades</span>
+                        </div>
+                        <ul class="medical-field-list">
+                            <li>Diabetes Mellitus Tipo 2 — Diagnosticada 2018</li>
+                            <li>Hipertensión arterial crónica</li>
+                            <li>Insuficiencia renal leve — Estadio 2</li>
+                        </ul>
+                        <button class="id-field-copy" data-copy-target="field-enfermedades"
+                            aria-label="Copiar enfermedades">
+                            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="5" y="5" width="9" height="9" rx="1" />
+                                <path d="M5 11H3a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v2" />
+                            </svg>
+                        </button>
+                        <span class="sr-only" id="field-enfermedades">Diabetes Tipo 2 (2018), Hipertensión arterial
+                            crónica, Insuficiencia renal leve estadio 2</span>
+                    </div>
+
+                    <!-- Medicamentos -->
+                    <div class="medical-field medical-field--info" data-medical-type="medication">
+                        <div class="medical-field-header">
+                            <span class="medical-field-icon medical-field-icon--info">
+                                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linecap="round">
+                                    <rect x="3" y="8" width="14" height="9" rx="1.5" />
+                                    <path d="M7 8V6a3 3 0 0 1 6 0v2" />
+                                    <path d="M10 11v3" />
+                                </svg>
+                            </span>
+                            <span class="medical-field-label">Medicamentos actuales</span>
+                        </div>
+                        <ul class="medical-field-list">
+                            <li>Metformina 850 mg — Cada 12 horas</li>
+                            <li>Losartán 50 mg — Una vez al día</li>
+                            <li>Ácido acetilsalicílico 100 mg — Una vez al día</li>
+                        </ul>
+                        <button class="id-field-copy" data-copy-target="field-medicamentos"
+                            aria-label="Copiar medicamentos">
+                            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="5" y="5" width="9" height="9" rx="1" />
+                                <path d="M5 11H3a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v2" />
+                            </svg>
+                        </button>
+                        <span class="sr-only" id="field-medicamentos">Metformina 850mg c/12h, Losartán 50mg c/24h, Ácido
+                            acetilsalicílico 100mg c/24h</span>
+                    </div>
+
+                    <!-- Restricciones médicas -->
+                    <div class="medical-field medical-field--danger" data-medical-type="restriction">
+                        <div class="medical-field-header">
+                            <span class="medical-field-icon medical-field-icon--danger">
+                                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round">
+                                    <circle cx="10" cy="10" r="8" />
+                                    <path d="M6 6l8 8" />
+                                </svg>
+                            </span>
+                            <span class="medical-field-label">Restricciones médicas</span>
+                            <span class="medical-field-tag medical-field-tag--danger">NO HACER</span>
+                        </div>
+                        <ul class="medical-field-list">
+                            <li>No administrar ibuprofeno ni AINEs</li>
+                            <li>No administrar penicilina ni derivados</li>
+                            <li>No usar materiales de latex en procedimientos</li>
+                            <li>Restricción de sodio en soluciones IV</li>
+                        </ul>
+                        <button class="id-field-copy" data-copy-target="field-restricciones"
+                            aria-label="Copiar restricciones">
+                            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="5" y="5" width="9" height="9" rx="1" />
+                                <path d="M5 11H3a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v2" />
+                            </svg>
+                        </button>
+                        <span class="sr-only" id="field-restricciones">No ibuprofeno ni AINEs, No penicilina ni
+                            derivados, No latex, Restricción de sodio IV</span>
+                    </div>
+
+                    <!-- Observaciones importantes -->
+                    <div class="medical-field medical-field--note medical-field--wide" data-medical-type="observation">
+                        <div class="medical-field-header">
+                            <span class="medical-field-icon medical-field-icon--note">
+                                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linecap="round">
+                                    <path d="M4 4h12v12H4z" />
+                                    <path d="M7 8h6M7 11h4" />
+                                </svg>
+                            </span>
+                            <span class="medical-field-label">Observaciones importantes</span>
+                        </div>
+                        <ul class="medical-field-list">
+                            <li>Portadora de marcapasos cardíaco — Implantado octubre 2021 — Modelo Medtronic Advisa
+                            </li>
+                            <li>No realizar resonancia magnética sin previa evaluación cardiológica</li>
+                            <li>Glucemia basal habitual: 110-140 mg/dL</li>
+                            <li>Paciente con anxiety preexistente — Mantener entorno calmado</li>
+                        </ul>
+                        <button class="id-field-copy" data-copy-target="field-observaciones"
+                            aria-label="Copiar observaciones">
+                            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="5" y="5" width="9" height="9" rx="1" />
+                                <path d="M5 11H3a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v2" />
+                            </svg>
+                        </button>
+                        <span class="sr-only" id="field-observaciones">Marcapaso Medtronic Advisa (oct 2021), No RM sin
+                            evaluación cardiológica, Glucemia 110-140 mg/dL, Anxiety preexistente</span>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- =====================
+           SECCIÓN 3 — CONTACTO ICE
+           In Case of Emergency
+           ===================== -->
+            <section class="card-section card-section--ice" aria-label="Contacto de emergencia ICE">
+
+                <div class="section-label section-label--ice">
+                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"
+                        stroke-linecap="round">
+                        <path
+                            d="M11 14s-3.5-2.5-5-4.5C4.5 7.5 4 6 4.5 4.5 5 3 6.5 2 8 2c2 0 3 1.5 3 1.5S12 2 14 2c1.5 0 3 1 3.5 2.5.5 1.5 0 3-1.5 5-1.5 2-5 4.5-5 4.5z" />
+                    </svg>
+                    Contacto ICE
+                    <span class="section-label-line"></span>
+                </div>
+
+                <!-- Contacto ICE primario -->
+                <div class="ice-contact" data-ice-role="primary">
+                    <div class="ice-contact-header">
+                        <div class="ice-contact-avatar">
+                            <span>CR</span>
+                        </div>
+                        <div class="ice-contact-info">
+                            <h3 class="ice-contact-name">Carlos Andrés Rodríguez García</h3>
+                            <span class="ice-contact-relationship">Padre</span>
+                            <span class="ice-contact-phone" id="ice-phone-1" data-phone="+573112345678">+57 311 234
+                                5678</span>
+                        </div>
+                    </div>
+                    <div class="ice-contact-actions">
+                        <button class="btn btn-call" data-action="call" data-phone-target="ice-phone-1"
+                            aria-label="Llamar a Carlos Andrés Rodríguez García">
+                            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M3.6 4.6a1.7 1.7 0 0 1 2.4 0l1.2 1.2a1.7 1.7 0 0 1 0 2.4l-.4.4a8.5 8.5 0 0 0 1.6 1.6l.4-.4a1.7 1.7 0 0 1 2.4 0l1.2 1.2a1.7 1.7 0 0 1 0 2.4l-.8.8a2 2 0 0 1-2.2.4 14 14 0 0 1-6.2-6.2 2 2 0 0 1 .4-2.2l.8-.8z" />
+                            </svg>
+                            Llamar
+                        </button>
+                        <button class="btn btn-whatsapp" data-action="whatsapp" data-phone-target="ice-phone-1"
+                            aria-label="Enviar WhatsApp a Carlos Andrés Rodríguez García">
+                            <svg viewBox="0 0 20 20" fill="currentColor">
+                                <path
+                                    d="M17.05 2.93A9.94 9.94 0 0 0 10.01 0C4.51 0 .03 4.48.03 9.97c0 1.76.46 3.47 1.33 4.98L0 20l5.23-1.37A9.95 9.95 0 0 0 10.01 20c5.5 0 9.97-4.48 9.97-9.98 0-2.66-1.04-5.17-2.93-7.09zM10.01 18.32a8.26 8.26 0 0 1-4.21-1.15l-.3-.18-3.12.82.83-3.04-.2-.31A8.24 8.24 0 0 1 1.7 9.97c0-4.56 3.71-8.27 8.31-8.27 2.22 0 4.3.86 5.87 2.43a8.25 8.25 0 0 1 2.43 5.85c-.01 4.56-3.72 8.27-8.3 8.34zm4.55-6.21c-.25-.12-1.47-.73-1.7-.81-.23-.08-.39-.12-.56.12-.16.25-.64.81-.78.98-.15.16-.29.18-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.15-.25-.02-.39.11-.51.12-.11.25-.29.37-.44.13-.14.16-.25.25-.42.08-.16.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.84-.2-.49-.41-.42-.56-.43h-.48c-.16 0-.43.06-.66.31-.23.25-.86.84-.86 2.04s.88 2.37 1 2.53c.13.16 1.73 2.64 4.2 3.7.58.25 1.04.4 1.39.52.59.19 1.12.16 1.54.1.47-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.16-.48-.28z" />
+                            </svg>
+                            WhatsApp
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Contacto ICE secundario -->
+                <div class="ice-contact" data-ice-role="secondary">
+                    <div class="ice-contact-header">
+                        <div class="ice-contact-avatar ice-contact-avatar--alt">
+                            <span>LR</span>
+                        </div>
+                        <div class="ice-contact-info">
+                            <h3 class="ice-contact-name">Laura Patricia Romero Sánchez</h3>
+                            <span class="ice-contact-relationship">Esposa</span>
+                            <span class="ice-contact-phone" id="ice-phone-2" data-phone="+573155671234">+57 315 567
+                                1234</span>
+                        </div>
+                    </div>
+                    <div class="ice-contact-actions">
+                        <button class="btn btn-call" data-action="call" data-phone-target="ice-phone-2"
+                            aria-label="Llamar a Laura Patricia Romero Sánchez">
+                            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M3.6 4.6a1.7 1.7 0 0 1 2.4 0l1.2 1.2a1.7 1.7 0 0 1 0 2.4l-.4.4a8.5 8.5 0 0 0 1.6 1.6l.4-.4a1.7 1.7 0 0 1 2.4 0l1.2 1.2a1.7 1.7 0 0 1 0 2.4l-.8.8a2 2 0 0 1-2.2.4 14 14 0 0 1-6.2-6.2 2 2 0 0 1 .4-2.2l.8-.8z" />
+                            </svg>
+                            Llamar
+                        </button>
+                        <button class="btn btn-whatsapp" data-action="whatsapp" data-phone-target="ice-phone-2"
+                            aria-label="Enviar WhatsApp a Laura Patricia Romero Sánchez">
+                            <svg viewBox="0 0 20 20" fill="currentColor">
+                                <path
+                                    d="M17.05 2.93A9.94 9.94 0 0 0 10.01 0C4.51 0 .03 4.48.03 9.97c0 1.76.46 3.47 1.33 4.98L0 20l5.23-1.37A9.95 9.95 0 0 0 10.01 20c5.5 0 9.97-4.48 9.97-9.98 0-2.66-1.04-5.17-2.93-7.09zM10.01 18.32a8.26 8.26 0 0 1-4.21-1.15l-.3-.18-3.12.82.83-3.04-.2-.31A8.24 8.24 0 0 1 1.7 9.97c0-4.56 3.71-8.27 8.31-8.27 2.22 0 4.3.86 5.87 2.43a8.25 8.25 0 0 1 2.43 5.85c-.01 4.56-3.72 8.27-8.3 8.34zm4.55-6.21c-.25-.12-1.47-.73-1.7-.81-.23-.08-.39-.12-.56.12-.16.25-.64.81-.78.98-.15.16-.29.18-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.15-.25-.02-.39.11-.51.12-.11.25-.29.37-.44.13-.14.16-.25.25-.42.08-.16.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.84-.2-.49-.41-.42-.56-.43h-.48c-.16 0-.43.06-.66.31-.23.25-.86.84-.86 2.04s.88 2.37 1 2.53c.13.16 1.73 2.64 4.2 3.7.58.25 1.04.4 1.39.52.59.19 1.12.16 1.54.1.47-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.16-.48-.28z" />
+                            </svg>
+                            WhatsApp
+                        </button>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- Pie de tarjeta -->
+            <footer class="card-footer">
+                <div class="card-footer-info">
+                    <span class="card-footer-notice">Esta tarjeta contiene información médica de emergencia. Trátela con
+                        confidencialidad.</span>
+                    <span class="card-footer-time" id="card-timestamp" data-datetime="2025-01-15T08:30:00-05:00"></span>
+                </div>
+                <div class="card-footer-logo" aria-hidden="true">
+                    <svg viewBox="0 0 28 28" fill="none">
+                        <rect width="28" height="28" rx="8" fill="currentColor" opacity="0.08" />
+                        <path d="M14 6C14 6 9.3 11 9.3 14.3c0 2.6 2.1 4.7 4.7 4.7s4.7-2.1 4.7-4.7C18.7 11 14 6 14 6z"
+                            fill="currentColor" opacity="0.6" />
+                    </svg>
+                    <span>MedCard</span>
+                </div>
+            </footer>
+
+        </article>
+
+    </div>
+
+    <!-- Contenedor de toasts (inyectado por JS si no existe) -->
+
+    <script src="/static/js/app.js"></script>
+    <script src="/static/js/emergency-card.js"></script>
+</body>
+
+</html>

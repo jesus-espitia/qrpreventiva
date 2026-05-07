@@ -1,0 +1,1367 @@
+/* =============================================
+   emergency-card.css
+   Estilos exclusivos de la tarjeta médica
+   de emergencia digital.
+   Mobile First — Prioridad: móvil
+   ============================================= */
+
+/* --- Variables específicas de la tarjeta --- */
+:root {
+  --card-max-width: 520px;
+  --card-radius: 20px;
+  --card-shadow: 0 2px 6px rgba(198,40,40,0.06),
+                 0 8px 24px rgba(0,0,0,0.06),
+                 0 16px 48px rgba(0,0,0,0.04);
+
+  --blood-size: 88px;
+  --blood-font: 42px;
+
+  --topbar-height: 56px;
+
+  --field-radius: 12px;
+  --field-gap: 8px;
+
+  --color-alert-bg: #FEF2F2;
+  --color-alert-border: #FECACA;
+  --color-alert-text: #991B1B;
+  --color-alert-icon: #DC2626;
+
+  --color-warning-bg: #FFFBEB;
+  --color-warning-border: #FDE68A;
+  --color-warning-text: #78350F;
+  --color-warning-icon: #D97706;
+
+  --color-info-bg: #EFF6FF;
+  --color-info-border: #BFDBFE;
+  --color-info-text: #1E3A5F;
+  --color-info-icon: #2563EB;
+
+  --color-danger-bg: #FEF2F2;
+  --color-danger-border: #DC2626;
+  --color-danger-text: #7F1D1D;
+  --color-danger-icon: #B91C1C;
+
+  --color-note-bg: #F8FAFC;
+  --color-note-border: #E2E8F0;
+  --color-note-text: #334155;
+  --color-note-icon: #64748B;
+
+  --wa-bg: #DCF8C6;
+  --wa-bg-dark: #25D366;
+  --wa-text: #054F2C;
+  --call-bg: #DBEAFE;
+  --call-bg-dark: #2563EB;
+  --call-text: #1E3A5F;
+}
+
+
+/* ============================================
+   PÁGINA — Contenedor general
+   ============================================ */
+.emergency-page {
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: #F3F4F6;
+  background-image:
+    radial-gradient(ellipse at 20% 0%, rgba(198,40,40,0.04) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 100%, rgba(198,40,40,0.03) 0%, transparent 50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px 12px 32px;
+}
+
+
+/* ============================================
+   TOPBAR — Barra superior de la tarjeta
+   ============================================ */
+.card-topbar {
+  width: 100%;
+  max-width: var(--card-max-width);
+  height: var(--topbar-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  padding: 0 4px;
+}
+
+.card-topbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--color-alert-icon);
+}
+
+.card-topbar-logo svg {
+  width: 32px;
+  height: 32px;
+  color: var(--color-alert-icon);
+}
+
+.card-topbar-actions {
+  display: flex;
+  gap: 8px;
+}
+
+
+/* ============================================
+   BOTONES — Globales de la tarjeta
+   ============================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  border-radius: 10px;
+  transition: all 180ms ease;
+  cursor: pointer;
+  border: none;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn:focus-visible {
+  outline: 3px solid var(--color-alert-icon);
+  outline-offset: 2px;
+}
+
+.btn svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.btn-sm {
+  padding: 8px 14px;
+  font-size: 0.8rem;
+  border-radius: 8px;
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--color-alert-text);
+  border: 1.5px solid var(--color-alert-border);
+}
+
+.btn-ghost:hover {
+  background: var(--color-alert-bg);
+}
+
+.btn-ghost:active {
+  transform: scale(0.97);
+}
+
+
+/* ============================================
+   TARJETA — Artículo principal
+   ============================================ */
+.emergency-card {
+  width: 100%;
+  max-width: var(--card-max-width);
+  background: #FFFFFF;
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+  overflow: hidden;
+  animation: cardEnter 0.5s ease both;
+}
+
+@keyframes cardEnter {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+
+/* ============================================
+   HEADER — Encabezado de la tarjeta
+   ============================================ */
+.card-header {
+  position: relative;
+  padding: 24px 20px 20px;
+  background: linear-gradient(135deg, #B91C1C 0%, #D9534F 50%, #E57373 100%);
+  color: #FFFFFF;
+  overflow: hidden;
+}
+
+/* Patrón sutil decorativo */
+.card-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 90% 20%, rgba(255,255,255,0.08) 0%, transparent 50%),
+    radial-gradient(circle at 10% 80%, rgba(255,255,255,0.05) 0%, transparent 40%);
+  pointer-events: none;
+}
+
+.card-header::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 20px;
+  background: #FFFFFF;
+  border-radius: 20px 20px 0 0;
+}
+
+.card-header-content {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Foto / iniciales del paciente */
+.patient-photo {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 3px solid rgba(255,255,255,0.35);
+  background: rgba(255,255,255,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  backdrop-filter: blur(4px);
+}
+
+.photo-initials {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  font-size: 1.35rem;
+  color: rgba(255,255,255,0.9);
+  letter-spacing: 0.02em;
+}
+
+.patient-header-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.patient-name {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  font-size: 1.15rem;
+  line-height: 1.25;
+  color: #FFFFFF;
+  margin-bottom: 8px;
+  word-break: break-word;
+}
+
+.patient-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 12px;
+}
+
+.patient-meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.85);
+  line-height: 1;
+}
+
+.patient-meta-item svg {
+  width: 13px;
+  height: 13px;
+  opacity: 0.7;
+}
+
+/* Badge de emergencia */
+.emergency-status {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 14px;
+  background: rgba(0,0,0,0.25);
+  border-radius: 20px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #FFFFFF;
+  backdrop-filter: blur(4px);
+  z-index: 2;
+}
+
+.emergency-pulse {
+  width: 8px;
+  height: 8px;
+  background: #FFFFFF;
+  border-radius: 50%;
+  position: relative;
+}
+
+.emergency-pulse::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.5);
+  animation: statusPulse 2s ease-in-out infinite;
+}
+
+@keyframes statusPulse {
+  0%   { transform: scale(0.8); opacity: 1; }
+  100% { transform: scale(2);   opacity: 0; }
+}
+
+
+/* ============================================
+   SECCIONES — Contenedor genérico
+   ============================================ */
+.card-section {
+  padding: 24px 20px;
+}
+
+.card-section + .card-section {
+  border-top: 1px solid #F1F3F5;
+}
+
+/* Etiqueta de sección */
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #6B7280;
+  margin-bottom: 16px;
+}
+
+.section-label svg {
+  width: 15px;
+  height: 15px;
+  color: #9CA3AF;
+}
+
+.section-label-line {
+  flex: 1;
+  height: 1px;
+  background: #E5E7EB;
+  margin-left: 4px;
+}
+
+/* Variante vital */
+.section-label--vital {
+  color: var(--color-alert-icon);
+}
+
+.section-label--vital svg {
+  color: var(--color-alert-icon);
+}
+
+.section-label--vital .section-label-line {
+  background: linear-gradient(to right, var(--color-alert-border), transparent);
+}
+
+/* Variante ICE */
+.section-label--ice {
+  color: #059669;
+}
+
+.section-label--ice svg {
+  color: #10B981;
+}
+
+.section-label--ice .section-label-line {
+  background: linear-gradient(to right, #A7F3D0, transparent);
+}
+
+
+/* ============================================
+   IDENTIFICACIÓN — Grid de campos
+   ============================================ */
+.id-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.id-field {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--field-gap);
+  padding: 14px;
+  background: #F9FAFB;
+  border-radius: var(--field-radius);
+  border: 1px solid #F1F3F5;
+  transition: border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.id-field:hover {
+  border-color: #E5E7EB;
+}
+
+.id-field--wide {
+  grid-column: 1 / -1;
+}
+
+.id-field-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #9CA3AF;
+}
+
+.id-field-value {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #1F2937;
+  word-break: break-word;
+  line-height: 1.35;
+  padding-right: 28px;
+}
+
+/* Botón copiar dentro de campos */
+.id-field-copy {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  color: #9CA3AF;
+  transition: all 180ms ease;
+  opacity: 0.6;
+}
+
+.id-field-copy:hover {
+  background: #E5E7EB;
+  color: #4B5563;
+  opacity: 1;
+}
+
+.id-field-copy:active {
+  transform: scale(0.9);
+}
+
+.id-field-copy svg {
+  width: 14px;
+  height: 14px;
+}
+
+.id-field-copy.copied {
+  color: #059669;
+  opacity: 1;
+}
+
+
+/* ============================================
+   SECCIÓN VITAL — Fondo diferenciado
+   ============================================ */
+.card-section--vital {
+  background: linear-gradient(180deg, #FFFBFB 0%, #FFFFFF 100%);
+  padding-top: 28px;
+  padding-bottom: 28px;
+}
+
+
+/* ============================================
+   GRUPO SANGUÍNEO — Bloque prominente
+   ============================================ */
+.blood-type-block {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 20px;
+  background: linear-gradient(135deg, #FEF2F2 0%, #FFF5F5 100%);
+  border: 2px solid #FECACA;
+  border-radius: 16px;
+  margin-bottom: 20px;
+  position: relative;
+  transition: transform 180ms ease;
+}
+
+.blood-type-block:hover {
+  transform: scale(1.01);
+}
+
+.blood-type-badge {
+  width: var(--blood-size);
+  height: var(--blood-size);
+  background: linear-gradient(145deg, #DC2626, #B91C1C);
+  border-radius: 16px;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 1px;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(185,28,28,0.25),
+              inset 0 1px 0 rgba(255,255,255,0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Brillo decorativo */
+.blood-type-badge::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 50%;
+  bottom: 50%;
+  background: linear-gradient(135deg, rgba(255,255,255,0.15), transparent);
+  border-radius: 16px 0 0 0;
+  pointer-events: none;
+}
+
+.blood-type-letter {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 900;
+  font-size: var(--blood-font);
+  color: #FFFFFF;
+  line-height: 1;
+  position: relative;
+  z-index: 1;
+}
+
+.blood-type-rh {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  font-size: calc(var(--blood-font) * 0.55);
+  color: rgba(255,255,255,0.85);
+  line-height: 1;
+  position: relative;
+  z-index: 1;
+  align-self: flex-start;
+  margin-top: 4px;
+}
+
+.blood-type-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.blood-type-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #9CA3AF;
+}
+
+.blood-type-detail {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #7F1D1D;
+}
+
+/* Botón copiar del bloque sanguíneo */
+.blood-type-block .id-field-copy {
+  top: 50%;
+  right: 14px;
+  transform: translateY(-50%);
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.7);
+  opacity: 0.8;
+}
+
+.blood-type-block .id-field-copy:hover {
+  background: #FFFFFF;
+  opacity: 1;
+}
+
+.blood-type-block .id-field-copy svg {
+  width: 16px;
+  height: 16px;
+}
+
+
+/* ============================================
+   CAMPOS MÉDICOS — Grid y variantes
+   ============================================ */
+.medical-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.medical-field {
+  position: relative;
+  padding: 16px 18px;
+  border-radius: 14px;
+  border-width: 1.5px;
+  border-style: solid;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.medical-field:hover {
+  transform: translateY(-1px);
+}
+
+.medical-field--wide {
+  grid-column: 1 / -1;
+}
+
+/* --- Variante: Alerta (Alergias) --- */
+.medical-field--alert {
+  background: var(--color-alert-bg);
+  border-color: var(--color-alert-border);
+}
+
+.medical-field--alert:hover {
+  box-shadow: 0 4px 16px rgba(220,38,38,0.1);
+}
+
+/* --- Variante: Advertencia (Enfermedades) --- */
+.medical-field--warning {
+  background: var(--color-warning-bg);
+  border-color: var(--color-warning-border);
+}
+
+.medical-field--warning:hover {
+  box-shadow: 0 4px 16px rgba(217,119,6,0.08);
+}
+
+/* --- Variante: Info (Medicamentos) --- */
+.medical-field--info {
+  background: var(--color-info-bg);
+  border-color: var(--color-info-border);
+}
+
+.medical-field--info:hover {
+  box-shadow: 0 4px 16px rgba(37,99,235,0.08);
+}
+
+/* --- Variante: Danger (Restricciones) --- */
+.medical-field--danger {
+  background: var(--color-danger-bg);
+  border-color: var(--color-danger-border);
+  border-style: dashed;
+}
+
+.medical-field--danger:hover {
+  box-shadow: 0 4px 16px rgba(185,28,28,0.1);
+}
+
+/* --- Variante: Nota (Observaciones) --- */
+.medical-field--note {
+  background: var(--color-note-bg);
+  border-color: var(--color-note-border);
+}
+
+.medical-field--note:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+}
+
+/* Header del campo médico */
+.medical-field-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.medical-field-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.medical-field-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.medical-field-icon--alert {
+  background: #FEE2E2;
+  color: var(--color-alert-icon);
+}
+
+.medical-field-icon--warning {
+  background: #FEF3C7;
+  color: var(--color-warning-icon);
+}
+
+.medical-field-icon--info {
+  background: #DBEAFE;
+  color: var(--color-info-icon);
+}
+
+.medical-field-icon--danger {
+  background: #FEE2E2;
+  color: var(--color-danger-icon);
+}
+
+.medical-field-icon--note {
+  background: #E2E8F0;
+  color: var(--color-note-icon);
+}
+
+.medical-field-label {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--gray-800, #1F2937);
+}
+
+/* Tags de severidad */
+.medical-field-tag {
+  margin-left: auto;
+  padding: 2px 10px;
+  border-radius: 20px;
+  font-size: 0.62rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.medical-field-tag--alert {
+  background: #DC2626;
+  color: #FFFFFF;
+}
+
+.medical-field-tag--danger {
+  background: #7F1D1D;
+  color: #FFFFFF;
+}
+
+/* Lista de items médicos */
+.medical-field-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-left: 36px;
+  padding-right: 28px;
+}
+
+.medical-field-list li {
+  font-size: 0.84rem;
+  font-weight: 500;
+  line-height: 1.5;
+  position: relative;
+  color: var(--gray-700, #374151);
+}
+
+.medical-field-list li::before {
+  content: '';
+  position: absolute;
+  left: -12px;
+  top: 8px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.4;
+}
+
+/* Colores de bullet por variante */
+.medical-field--alert .medical-field-list li { color: var(--color-alert-text); }
+.medical-field--alert .medical-field-list li::before { background: var(--color-alert-icon); }
+
+.medical-field--warning .medical-field-list li { color: var(--color-warning-text); }
+.medical-field--warning .medical-field-list li::before { background: var(--color-warning-icon); }
+
+.medical-field--info .medical-field-list li { color: var(--color-info-text); }
+.medical-field--info .medical-field-list li::before { background: var(--color-info-icon); }
+
+.medical-field--danger .medical-field-list li { color: var(--color-danger-text); font-weight: 600; }
+.medical-field--danger .medical-field-list li::before { background: var(--color-danger-icon); }
+
+.medical-field--note .medical-field-list li { color: var(--color-note-text); }
+.medical-field--note .medical-field-list li::before { background: var(--color-note-icon); }
+
+/* Botón copiar en campos médicos */
+.medical-field .id-field-copy {
+  top: 12px;
+  right: 12px;
+}
+
+
+/* ============================================
+   CONTACTO ICE — Sección de emergencia
+   ============================================ */
+.card-section--ice {
+  background: linear-gradient(180deg, #FFFFFF 0%, #F0FDF4 100%);
+}
+
+.ice-contact {
+  padding: 18px;
+  background: #FFFFFF;
+  border-radius: 14px;
+  border: 1.5px solid #D1FAE5;
+  margin-bottom: 12px;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.ice-contact:last-child {
+  margin-bottom: 0;
+}
+
+.ice-contact:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(5,150,105,0.08);
+}
+
+.ice-contact-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.ice-contact-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #059669, #10B981);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ice-contact-avatar--alt {
+  background: linear-gradient(135deg, #0D9488, #14B8A6);
+}
+
+.ice-contact-avatar span {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #FFFFFF;
+}
+
+.ice-contact-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.ice-contact-name {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #1F2937;
+  margin-bottom: 2px;
+  word-break: break-word;
+}
+
+.ice-contact-relationship {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #059669;
+  background: #D1FAE5;
+  padding: 2px 10px;
+  border-radius: 20px;
+  margin-bottom: 4px;
+}
+
+.ice-contact-phone {
+  display: block;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #374151;
+  letter-spacing: 0.02em;
+}
+
+/* Botones de acción ICE */
+.ice-contact-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.btn-call,
+.btn-whatsapp {
+  padding: 14px 16px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  border-radius: 12px;
+  gap: 8px;
+}
+
+.btn-call {
+  background: var(--call-bg);
+  color: var(--call-text);
+  border: 1.5px solid #93C5FD;
+}
+
+.btn-call:hover {
+  background: var(--call-bg-dark);
+  color: #FFFFFF;
+  border-color: var(--call-bg-dark);
+  box-shadow: 0 4px 12px rgba(37,99,235,0.25);
+}
+
+.btn-call:active {
+  transform: scale(0.97);
+}
+
+.btn-whatsapp {
+  background: var(--wa-bg);
+  color: var(--wa-text);
+  border: 1.5px solid #86EFAC;
+}
+
+.btn-whatsapp:hover {
+  background: var(--wa-bg-dark);
+  color: #FFFFFF;
+  border-color: var(--wa-bg-dark);
+  box-shadow: 0 4px 12px rgba(37,211,102,0.25);
+}
+
+.btn-whatsapp:active {
+  transform: scale(0.97);
+}
+
+.btn-call svg,
+.btn-whatsapp svg {
+  width: 20px;
+  height: 20px;
+}
+
+
+/* ============================================
+   FOOTER — Pie de la tarjeta
+   ============================================ */
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 20px;
+  background: #F9FAFB;
+  border-top: 1px solid #F1F3F5;
+}
+
+.card-footer-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+
+.card-footer-notice {
+  font-size: 0.68rem;
+  color: #9CA3AF;
+  line-height: 1.4;
+}
+
+.card-footer-time {
+  font-size: 0.68rem;
+  color: #9CA3AF;
+  font-weight: 500;
+}
+
+.card-footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #D1D5DB;
+  flex-shrink: 0;
+}
+
+.card-footer-logo svg {
+  width: 24px;
+  height: 24px;
+}
+
+.card-footer-logo span {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 0.75rem;
+  color: #D1D5DB;
+}
+
+
+/* ============================================
+   TOASTS — Notificaciones flotantes
+   ============================================ */
+#toast-container {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 8px;
+  pointer-events: none;
+  width: calc(100% - 32px);
+  max-width: 360px;
+}
+
+.toast {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 18px;
+  border-radius: 12px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  transform: translateY(20px);
+  opacity: 0;
+  transition: transform 300ms ease, opacity 300ms ease;
+  pointer-events: auto;
+}
+
+.toast--visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.toast--success { background: #059669; }
+.toast--error   { background: #DC2626; }
+.toast--info    { background: #2563EB; }
+.toast--warning { background: #D97706; }
+
+.toast__icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+
+/* ============================================
+   RESPONSIVE — Breakpoints
+   Prioridad: Mobile First
+   ============================================ */
+
+/* Tablets pequeñas (480px+) */
+@media (min-width: 480px) {
+  .emergency-page {
+    padding: 20px 16px 48px;
+  }
+
+  .card-header {
+    padding: 28px 28px 24px;
+  }
+
+  .patient-photo {
+    width: 72px;
+    height: 72px;
+  }
+
+  .photo-initials {
+    font-size: 1.5rem;
+  }
+
+  .patient-name {
+    font-size: 1.3rem;
+  }
+
+  .card-section {
+    padding: 28px 24px;
+  }
+
+  .id-field {
+    padding: 16px;
+  }
+
+  .id-field-value {
+    font-size: 0.95rem;
+  }
+
+  :root {
+    --blood-size: 96px;
+    --blood-font: 48px;
+  }
+
+  .blood-type-block {
+    padding: 20px 24px;
+    gap: 20px;
+  }
+
+  .medical-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .medical-field--wide {
+    grid-column: 1 / -1;
+  }
+
+  .ice-contact {
+    padding: 20px;
+  }
+
+  .btn-call,
+  .btn-whatsapp {
+    padding: 16px 20px;
+    font-size: 0.9rem;
+  }
+}
+
+/* Tablets grandes (640px+) */
+@media (min-width: 640px) {
+  .emergency-page {
+    padding: 32px 24px 64px;
+  }
+
+  .card-topbar {
+    margin-bottom: 16px;
+  }
+
+  .emergency-status {
+    top: 20px;
+    right: 24px;
+    padding: 8px 18px;
+    font-size: 0.78rem;
+  }
+
+  .card-section {
+    padding: 32px 28px;
+  }
+
+  .blood-type-detail {
+    font-size: 1rem;
+  }
+
+  .medical-field-list li {
+    font-size: 0.88rem;
+  }
+
+  .ice-contact-actions {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+}
+
+/* Laptops (768px+) */
+@media (min-width: 768px) {
+  .emergency-page {
+    padding: 48px 32px 80px;
+    justify-content: flex-start;
+  }
+
+  :root {
+    --card-max-width: 560px;
+    --blood-size: 104px;
+    --blood-font: 52px;
+  }
+
+  .card-header {
+    padding: 32px 32px 28px;
+  }
+
+  .patient-photo {
+    width: 80px;
+    height: 80px;
+  }
+
+  .photo-initials {
+    font-size: 1.65rem;
+  }
+
+  .patient-name {
+    font-size: 1.4rem;
+  }
+
+  .patient-meta-item {
+    font-size: 0.8rem;
+  }
+
+  .card-section {
+    padding: 36px 32px;
+  }
+
+  .id-grid {
+    gap: 12px;
+  }
+
+  .medical-grid {
+    gap: 14px;
+  }
+
+  .medical-field {
+    padding: 18px 20px;
+  }
+
+  .medical-field-list {
+    padding-left: 40px;
+  }
+
+  .ice-contact {
+    padding: 24px;
+  }
+
+  .ice-contact-header {
+    gap: 16px;
+    margin-bottom: 18px;
+  }
+
+  .ice-contact-avatar {
+    width: 52px;
+    height: 52px;
+  }
+
+  .ice-contact-name {
+    font-size: 1rem;
+  }
+
+  .btn-call,
+  .btn-whatsapp {
+    padding: 16px 24px;
+    font-size: 0.92rem;
+  }
+
+  .card-footer {
+    padding: 18px 28px;
+  }
+
+  #toast-container {
+    bottom: 32px;
+    max-width: 380px;
+  }
+}
+
+/* Pantallas grandes (1024px+) */
+@media (min-width: 1024px) {
+  :root {
+    --card-max-width: 580px;
+  }
+
+  .emergency-page {
+    padding-top: 56px;
+  }
+}
+
+
+/* ============================================
+   IMPRESIÓN — Estilos para @media print
+   ============================================ */
+@media print {
+  body {
+    background: #FFFFFF;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .emergency-page {
+    padding: 0;
+    background: none;
+    min-height: auto;
+  }
+
+  .card-topbar {
+    display: none;
+  }
+
+  .emergency-card {
+    box-shadow: none;
+    border: 2px solid #E5E7EB;
+    border-radius: 8px;
+    max-width: 100%;
+    animation: none;
+  }
+
+  .card-header {
+    border-radius: 6px 6px 0 0;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .emergency-pulse::before {
+    animation: none;
+  }
+
+  .card-section--vital {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .blood-type-badge {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .medical-field {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    break-inside: avoid;
+  }
+
+  .id-field-copy,
+  .blood-type-block .id-field-copy,
+  .medical-field .id-field-copy {
+    display: none;
+  }
+
+  .btn-call,
+  .btn-whatsapp {
+    display: none;
+  }
+
+  #toast-container {
+    display: none;
+  }
+
+  .ice-contact {
+    break-inside: avoid;
+  }
+
+  .card-footer {
+    background: #F9FAFB;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
+
+
+/* ============================================
+   ACCESIBILIDAD — Reduced motion
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  .emergency-card {
+    animation: none;
+  }
+
+  .emergency-pulse::before {
+    animation: none;
+  }
+
+  .toast {
+    transition: none;
+  }
+
+  .btn,
+  .id-field,
+  .medical-field,
+  .ice-contact,
+  .blood-type-block {
+    transition: none;
+  }
+}
