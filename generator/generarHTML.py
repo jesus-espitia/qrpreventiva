@@ -12,27 +12,55 @@ SALIDA_DIR = os.path.join(BASE_DIR, "salida")
 
 
 # ==========================================================
+# REEMPLAZAR SOLO UNA OCURRENCIA
+# ==========================================================
+def reemplazar_una_vez(texto, buscar, reemplazo, ocurrencia=1):
+
+    partes = texto.split(buscar)
+
+    if len(partes) <= ocurrencia:
+        return texto
+
+    resultado = partes[0]
+
+    for i in range(1, len(partes)):
+
+        if i == ocurrencia:
+            resultado += reemplazo
+        else:
+            resultado += buscar
+
+        resultado += partes[i]
+
+    return resultado
+
+
+# ==========================================================
 # FUNCION GENERAR HTML
 # ==========================================================
 def generar():
+
     try:
 
         # verificar template
         if not os.path.exists(TEMPLATE_PATH):
+
             messagebox.showerror(
                 "Error",
                 f"No se encontró:\n{TEMPLATE_PATH}"
             )
+
             return
 
         # leer template
         with open(TEMPLATE_PATH, "r", encoding="utf-8") as f:
             html = f.read()
 
-        # -----------------------------
-        # REEMPLAZOS
-        # -----------------------------
+        # ==================================================
+        # REEMPLAZOS GENERALES
+        # ==================================================
         reemplazos = {
+
             "#----> Aqui Nombres Y Apellidos#": nombre.get(),
             "#----> Aqui Gottlieb Daimler#": nombre.get(),
 
@@ -77,11 +105,104 @@ def generar():
         for viejo, nuevo in reemplazos.items():
             html = html.replace(viejo, nuevo)
 
-        # crear carpeta salida
+        # ==================================================
+        # ICE 1 y ICE 2
+        # SIN MODIFICAR EL HTML
+        # ==================================================
+
+        # -------------------------
+        # NOMBRES
+        # -------------------------
+        html = reemplazar_una_vez(
+            html,
+            "#----> Aqui Nombres y Apellidos#",
+            ice1_nombre.get(),
+            1
+        )
+
+        html = reemplazar_una_vez(
+            html,
+            "#----> Aqui Nombres y Apellidos#",
+            ice2_nombre.get(),
+            2
+        )
+
+        # -------------------------
+        # PARENTESCOS
+        # -------------------------
+        html = reemplazar_una_vez(
+            html,
+            "#----> Aqui Parentesco#",
+            ice1_parentesco.get(),
+            1
+        )
+
+        html = reemplazar_una_vez(
+            html,
+            "#----> Aqui Parentesco#",
+            ice2_parentesco.get(),
+            2
+        )
+
+        # -------------------------
+        # TELEFONOS VISIBLES
+        # -------------------------
+        html = reemplazar_una_vez(
+            html,
+            "#----> Aqui +57 111 222 3333#",
+            ice1_tel_visible.get(),
+            1
+        )
+
+        html = reemplazar_una_vez(
+            html,
+            "#----> Aqui +57 111 222 3333#",
+            ice2_tel_visible.get(),
+            2
+        )
+
+        # -------------------------
+        # TELEFONOS BOTONES
+        # -------------------------
+        html = reemplazar_una_vez(
+            html,
+            "#----> Aqui 571112223333#",
+            ice1_tel_btn.get(),
+            1
+        )
+
+        html = reemplazar_una_vez(
+            html,
+            "#----> Aqui 571112223333#",
+            ice1_tel_btn.get(),
+            2
+        )
+
+        html = reemplazar_una_vez(
+            html,
+            "#----> Aqui 571112223333#",
+            ice2_tel_btn.get(),
+            3
+        )
+
+        html = reemplazar_una_vez(
+            html,
+            "#----> Aqui 571112223333#",
+            ice2_tel_btn.get(),
+            4
+        )
+
+        # ==================================================
+        # CREAR CARPETA SALIDA
+        # ==================================================
         os.makedirs(SALIDA_DIR, exist_ok=True)
 
         nombre_archivo = nombre.get().replace(" ", "_")
-        ruta_salida = os.path.join(SALIDA_DIR, f"{nombre_archivo}.html")
+
+        ruta_salida = os.path.join(
+            SALIDA_DIR,
+            f"{nombre_archivo}.html"
+        )
 
         with open(ruta_salida, "w", encoding="utf-8") as f:
             f.write(html)
@@ -92,14 +213,21 @@ def generar():
         )
 
     except Exception as e:
-        messagebox.showerror("Error", str(e))
+        messagebox.showerror(
+            "Error",
+            str(e)
+        )
 
 
 # ==========================================================
 # FUNCION PARA CREAR CAMPOS
 # ==========================================================
 def crear_campo(texto):
-    ttk.Label(form_frame, text=texto).pack(pady=(8, 2))
+
+    ttk.Label(
+        form_frame,
+        text=texto
+    ).pack(pady=(8, 2))
 
     var = tk.StringVar()
 
@@ -116,21 +244,25 @@ def crear_campo(texto):
 # VENTANA
 # ==========================================================
 root = tk.Tk()
+
 root.title("Generador Tarjeta Médica")
-root.geometry("700x800")
+root.geometry("700x900")
 
 
 # ==========================================================
 # SCROLL
 # ==========================================================
 canvas = tk.Canvas(root)
+
 scrollbar = ttk.Scrollbar(
     root,
     orient="vertical",
     command=canvas.yview
 )
 
-canvas.configure(yscrollcommand=scrollbar.set)
+canvas.configure(
+    yscrollcommand=scrollbar.set
+)
 
 scrollbar.pack(side="right", fill="y")
 canvas.pack(side="left", fill="both", expand=True)
@@ -145,23 +277,33 @@ canvas.create_window(
 
 
 def actualizar_scroll(event):
+
     canvas.configure(
         scrollregion=canvas.bbox("all")
     )
 
 
-form_frame.bind("<Configure>", actualizar_scroll)
+form_frame.bind(
+    "<Configure>",
+    actualizar_scroll
+)
 
 
-# rueda del mouse
+# ==========================================================
+# RUEDA DEL MOUSE
+# ==========================================================
 def wheel(event):
+
     canvas.yview_scroll(
         int(-1 * (event.delta / 120)),
         "units"
     )
 
 
-canvas.bind_all("<MouseWheel>", wheel)
+canvas.bind_all(
+    "<MouseWheel>",
+    wheel
+)
 
 
 # ==========================================================
@@ -199,13 +341,33 @@ rest2 = crear_campo("Restricción 2")
 rest3 = crear_campo("Restricción 3")
 rest4 = crear_campo("Restricción 4")
 
+# ==========================================================
+# OBSERVACIONES
+# ==========================================================
 obs1 = crear_campo("Observación 1")
 obs2 = crear_campo("Observación 2")
 obs3 = crear_campo("Observación 3")
 obs4 = crear_campo("Observación 4")
 
+# ==========================================================
+# ICE 1
+# ==========================================================
+ice1_nombre = crear_campo("ICE 1 - Nombre")
+ice1_parentesco = crear_campo("ICE 1 - Parentesco")
+ice1_tel_visible = crear_campo("ICE 1 - Teléfono visible (+57...)")
+ice1_tel_btn = crear_campo("ICE 1 - Teléfono botón (571...)")
 
+# ==========================================================
+# ICE 2
+# ==========================================================
+ice2_nombre = crear_campo("ICE 2 - Nombre")
+ice2_parentesco = crear_campo("ICE 2 - Parentesco")
+ice2_tel_visible = crear_campo("ICE 2 - Teléfono visible (+57...)")
+ice2_tel_btn = crear_campo("ICE 2 - Teléfono botón (571...)")
+
+# ==========================================================
 # BOTON
+# ==========================================================
 tk.Button(
     form_frame,
     text="GENERAR HTML",
@@ -215,6 +377,5 @@ tk.Button(
     width=30,
     height=2
 ).pack(pady=30)
-
 
 root.mainloop()
