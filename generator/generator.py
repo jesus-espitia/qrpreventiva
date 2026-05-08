@@ -24,7 +24,7 @@ ruta_guardado = os.path.join(
     "..",
     "static",
     "img",
-    "users"
+    "QR"
 )
 
 # Crear carpeta si no existe
