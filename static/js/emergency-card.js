@@ -244,11 +244,7 @@
             // ====================================================
 
             var message =
-                'Emergencia médica — Tarjeta de ' +
-                patientName +
-                '. Soy contacto ICE: ' +
-                contactName +
-                '. Por favor comunicarse urgentemente.';
+                'Emergencia médica — Tarjeta de ' + patientName + '. Usted '+ contactName +' ha sido registrado como contacto de emergencia (ICE). Por favor comunicarse urgentemente.';
 
             // ====================================================
             // URL WHATSAPP

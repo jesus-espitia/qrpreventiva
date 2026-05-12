@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap'); 
 :root {
     /* Rojos de emergencia */
     --red-900: #7F1D1D;
@@ -279,6 +280,7 @@ body {
 
 /* Grid de información */
 .info-grid {
+    font-family: "Noto Sans", sans-serif;
     display: grid;
     grid-template-columns: 1fr;
     gap: 6px;

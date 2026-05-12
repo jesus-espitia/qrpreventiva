@@ -309,15 +309,15 @@ canvas.bind_all(
 # ==========================================================
 # CAMPOS
 # ==========================================================
-nombre = crear_campo("Nombre")
-nacimiento = crear_campo("Nacimiento")
-eps = crear_campo("EPS")
+nombre = crear_campo("Nombre Completo")
+nacimiento = crear_campo("Fecha de nacimiento")
+eps = crear_campo("EPS (Seguro medico)")
 vehiculo = crear_campo("Vehículo")
 placa = crear_campo("Placa")
-foto = crear_campo("Ruta imagen")
+foto = crear_campo("Ruta perfil '/static/img/client/Nombre_Apellido/.png'")
 
-grupo = crear_campo("Grupo sanguíneo")
-rh = crear_campo("RH")
+grupo = crear_campo("Grupo sanguíneo 'A, B, AB y O' ")
+rh = crear_campo("RH 'positiva (+) o negativa (-)' ")
 
 alergia1 = crear_campo("Alergia 1")
 alergia1_desc = crear_campo("Descripción alergia 1")
