@@ -1,30 +1,21 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description"
     content="QRPreventiva — Tarjeta médica digital de emergencia para accidentes de tránsito y urgencias médicas. Información vital al instante.">
-  <title>QRPreventiva — Tarjeta Médica Digital de Emergencia</title>
-
-  <!-- Tipografía -->
+  <title>QRPreventiva | Tarjeta Médica Digital de Emergencia</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800;900&display=swap"
-    rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800;900&display=swap" rel="stylesheet">
   <link rel="icon" href="static/img/icon/iconLogo.png">
   <link rel="stylesheet" href="static/css/styles.css">
   <link rel="stylesheet" href="static/css/home.css">
+  <link rel="stylesheet" href="static/css/chatbot.css">
 </head>
 
 <body>
-
-  <!-- ========================================
-       HEADER / NAVEGACIÓN
-       ======================================== -->
   <header class="home-header">
     <div class="home-container">
       <a href="#" class="header-logo" aria-label="QRPreventiva inicio">
@@ -52,8 +43,8 @@
   <main>
 
     <!-- ========================================
-         HERO SECTION
-         ======================================== -->
+        HERO SECTION
+        ======================================== -->
     <section class="hero">
       <div class="home-container">
         <div class="hero-content">
@@ -74,10 +65,6 @@
               <div class="hero-stat-label">Acceso a datos vitales</div>
             </div>
             <div>
-              <div class="hero-stat-value">100%</div>
-              <div class="hero-stat-label">Sin conexión requerida</div>
-            </div>
-            <div>
               <div class="hero-stat-value">ICE</div>
               <div class="hero-stat-label">Contacto inmediato</div>
             </div>
@@ -86,59 +73,61 @@
 
         <!-- Mockup visual de tarjeta -->
         <div class="hero-visual" aria-hidden="true">
-          <div class="hero-card-mockup">
-            <div class="hero-card-header">
-              <div class="hero-card-avatar">+</div>
-              <div>
-                <div class="hero-card-name">María Rodríguez</div>
-                <div class="hero-card-doc">CC 1.222.333.444</div>
+          <a href="templates/client/Gottlieb_Daimler/emergency_card_Gottlieb_Daimler.html">
+            <div class="hero-card-mockup">
+              <div class="hero-card-header">
+                <div class="hero-card-avatar">+</div>
+                <div>
+                  <div class="hero-card-name">María Rodríguez</div>
+                  <div class="hero-card-doc">CC 1.222.333.444</div>
+                </div>
+                <div class="hero-card-badge">
+                  <span class="hero-card-badge-dot"></span>
+                  Emergencia
+                </div>
               </div>
-              <div class="hero-card-badge">
-                <span class="hero-card-badge-dot"></span>
-                Emergencia
+              <div class="hero-card-blood">
+                <div class="hero-card-blood-icon">O+</div>
+                <div>
+                  <div class="hero-card-blood-text">Grupo sanguíneo</div>
+                  <div class="hero-card-blood-type">O Positivo</div>
+                </div>
+              </div>
+              <div class="hero-card-items">
+                <div class="hero-card-item">
+                  <span class="hero-card-item-dot"></span>
+                  Alergia: Penicilina, Latex
+                </div>
+                <div class="hero-card-item">
+                  <span class="hero-card-item-dot"></span>
+                  Diabetes Tipo 2
+                </div>
+                <div class="hero-card-item">
+                  <span class="hero-card-item-dot"></span>
+                  Metformina 850mg
+                </div>
+                <div class="hero-card-item">
+                  <span class="hero-card-item-dot"></span>
+                  ICE: Carlos Rodríguez — Esposo
+                </div>
+              </div>
+              <!-- Línea ECG decorativa -->
+              <div class="hero-ecg">
+                <svg viewBox="0 0 800 50" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                  <path
+                    d="M0 25 L100 25 L120 25 L140 8 L160 42 L180 15 L200 35 L220 25 L400 25 L420 25 L440 8 L460 42 L480 15 L500 35 L520 25 L800 25"
+                    stroke="#D9534F" stroke-width="2" fill="none" />
+                </svg>
               </div>
             </div>
-            <div class="hero-card-blood">
-              <div class="hero-card-blood-icon">O+</div>
-              <div>
-                <div class="hero-card-blood-text">Grupo sanguíneo</div>
-                <div class="hero-card-blood-type">O Positivo</div>
-              </div>
-            </div>
-            <div class="hero-card-items">
-              <div class="hero-card-item">
-                <span class="hero-card-item-dot"></span>
-                Alergia: Penicilina, Latex
-              </div>
-              <div class="hero-card-item">
-                <span class="hero-card-item-dot"></span>
-                Diabetes Tipo 2
-              </div>
-              <div class="hero-card-item">
-                <span class="hero-card-item-dot"></span>
-                Metformina 850mg
-              </div>
-              <div class="hero-card-item">
-                <span class="hero-card-item-dot"></span>
-                ICE: Carlos Rodríguez — Esposo
-              </div>
-            </div>
-            <!-- Línea ECG decorativa -->
-            <div class="hero-ecg">
-              <svg viewBox="0 0 800 50" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-                <path
-                  d="M0 25 L100 25 L120 25 L140 8 L160 42 L180 15 L200 35 L220 25 L400 25 L420 25 L440 8 L460 42 L480 15 L500 35 L520 25 L800 25"
-                  stroke="#D9534F" stroke-width="2" fill="none" />
-              </svg>
-            </div>
-          </div>
+          </a>
         </div>
       </div>
     </section>
 
     <!-- ========================================
-         SECCIÓN: QUÉ ES QRPreventiva
-         ======================================== -->
+        SECCIÓN: QUÉ ES QRPreventiva
+      ======================================== -->
     <section class="section" id="que-es">
       <div class="home-container">
         <div class="section-header animate-on-scroll">
@@ -195,7 +184,7 @@
             </div>
             <div>
               <h3>Identificación completa</h3>
-              <p>Cédula, licencia de conducción, EPS, SOAT y fecha de nacimiento disponibles sin demora.</p>
+              <p>Vehículo, Placa, fecha de nacimiento disponibles sin demora.</p>
             </div>
           </article>
         </div>
@@ -203,8 +192,8 @@
     </section>
 
     <!-- ========================================
-         SECCIÓN: CÓMO FUNCIONA
-         ======================================== -->
+        SECCIÓN: CÓMO FUNCIONA
+        ======================================== -->
     <section class="section section--alt" id="como-funciona">
       <div class="home-container">
         <div class="section-header animate-on-scroll">
@@ -304,8 +293,7 @@
                 </div>
                 <div class="ice-feature-text">
                   <strong>Mensaje automático por WhatsApp</strong>
-                  <span>Envía un mensaje pre-cargado con datos del paciente y grupo sanguíneo al contacto de
-                    emergencia.</span>
+                  <span>Envía un mensaje pre-cargado con datos del paciente</span>
                 </div>
               </div>
 
@@ -318,7 +306,7 @@
                 </div>
                 <div class="ice-feature-text">
                   <strong>Información completa</strong>
-                  <span>El mensaje incluye nombre, grupo sanguíneo y alerta de emergencia para agilizar la
+                  <span>El mensaje incluye nombre y alerta de emergencia para agilizar la
                     respuesta.</span>
                 </div>
               </div>
@@ -360,37 +348,6 @@
             <p>Sin login, sin contraseñas, sin formularios. La información médica está visible inmediatamente.</p>
           </article>
 
-          <article class="benefit-card animate-on-scroll" data-anim-delay="50">
-            <div class="benefit-card-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg>
-            </div>
-            <h3>Sin conexión a internet</h3>
-            <p>Funciona offline. En zonas sin cobertura o con red saturada, la información sigue disponible.</p>
-          </article>
-
-          <article class="benefit-card animate-on-scroll" data-anim-delay="100">
-            <div class="benefit-card-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
-                <rect x="5" y="2" width="14" height="20" rx="2" />
-                <path d="M12 18h.01" />
-              </svg>
-            </div>
-            <h3>Optimizada para móviles</h3>
-            <p>Diseño mobile-first con botones grandes, texto legible y toque fácil para usar en campo.</p>
-          </article>
-
-          <article class="benefit-card animate-on-scroll" data-anim-delay="150">
-            <div class="benefit-card-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
-                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                <path d="M14 2v6h6M16 13H8M16 17H8M10 9H8" />
-              </svg>
-            </div>
-            <h3>Copiar información</h3>
-            <p>Copia cualquier campo o toda la tarjeta completa al portapapeles para transferir datos rápidamente.</p>
-          </article>
 
           <article class="benefit-card animate-on-scroll" data-anim-delay="200">
             <div class="benefit-card-icon" aria-hidden="true">
@@ -451,7 +408,7 @@
                 <div class="traffic-stat-label">Tiempo promedio perdido buscando información</div>
               </div>
               <div class="traffic-stat">
-                <div class="traffic-stat-value">0s</div>
+                <div class="traffic-stat-value">3s</div>
                 <div class="traffic-stat-label">Tiempo de acceso con QRPreventiva</div>
               </div>
             </div>
@@ -492,14 +449,52 @@
         <p class="footer-description">Tarjeta médica digital de emergencia. Información vital al instante para
           accidentes de tránsito y urgencias médicas.</p>
         <div class="footer-divider"></div>
-        <p class="footer-bottom">QRPreventiva — Sistema de identificación médica de emergencia. Solo para fines informativos
+        <p class="footer-bottom">QRPreventiva — Sistema de identificación médica de emergencia. Solo para fines
+          informativos
           y de emergencia.</p>
       </div>
     </div>
   </footer>
 
-  <!-- Scripts (separados, al final del body) -->
+
+  <!-- Chatbot Widget -->
+  <div id="chatbot-widget">
+    <button id="chatbot-toggle" aria-label="Abrir chat de asistencia">
+      <svg class="chatbot-icon-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+      </svg>
+      <svg class="chatbot-icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round">
+        <path d="M18 6L6 18M6 6l12 12" />
+      </svg>
+    </button>
+    <div id="chatbot-panel">
+      <div class="chatbot-header">
+        <div class="chatbot-header-logo">
+          <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18 8C18 8 12 14 12 18C12 21.3 14.7 24 18 24C21.3 24 24 21.3 24 18C24 14 18 8 18 8Z"
+              fill="currentColor" />
+            <path d="M15 17H21M18 14V20" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+          </svg>
+        </div>
+        <div class="chatbot-header-info">
+          <div class="chatbot-header-title">QRPreventiva</div>
+          <div class="chatbot-header-status">En línea</div>
+        </div>
+        <button id="chatbot-close" aria-label="Cerrar chat">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <path d="M18 6L6 18M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <div id="chatbot-messages" class="chatbot-messages"></div>
+      <div id="chatbot-options" class="chatbot-options"></div>
+    </div>
+  </div>
+
   <script src="static/js/app.js"></script>
+  <script src="static/js/chatbot.js"></script>
   <script src="static/js/home.js"></script>
 </body>
 
