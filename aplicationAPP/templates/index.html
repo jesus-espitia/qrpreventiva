@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador QRPreventiva</title>
+</head>
+<body>
+    <h2>Generador de Tarjeta Médica</h2>
+    <form id="formGenerador">
+        <fieldset>
+            <legend>Información Personal</legend>
+            <label>Nombre Completo: <input type="text" name="nombre" required></label><br>
+            <label>Fecha de nacimiento: <input type="text" name="nacimiento" required></label><br>
+            <label>EPS: <input type="text" name="eps" required></label><br>
+            <label>Vehículo: <input type="text" name="vehiculo" required></label><br>
+            <label>Placa: <input type="text" name="placa" required></label><br>
+            <label>Foto de perfil: <input type="file" name="foto" accept="image/*" required></label><br>
+            <label>Grupo sanguíneo (A, B, AB, O): <input type="text" name="grupo" required></label><br>
+            <label>RH (+ o -): <input type="text" name="rh" required></label><br>
+        </fieldset>
+
+        <fieldset>
+            <legend>Alergias</legend>
+            <label>Alergia 1: <input type="text" name="alergia1"></label>
+            <label>Desc: <input type="text" name="alergia1_desc"></label><br>
+            <label>Alergia 2: <input type="text" name="alergia2"></label>
+            <label>Desc: <input type="text" name="alergia2_desc"></label><br>
+            <label>Alergia 3: <input type="text" name="alergia3"></label>
+            <label>Desc: <input type="text" name="alergia3_desc"></label><br>
+        </fieldset>
+
+        <fieldset>
+            <legend>Enfermedades y Medicamentos</legend>
+            <label>Enfermedad 1: <input type="text" name="enf1"></label><br>
+            <label>Enfermedad 2: <input type="text" name="enf2"></label><br>
+            <label>Enfermedad 3: <input type="text" name="enf3"></label><br>
+            <label>Medicamento 1: <input type="text" name="med1"></label><br>
+            <label>Medicamento 2: <input type="text" name="med2"></label><br>
+            <label>Medicamento 3: <input type="text" name="med3"></label><br>
+        </fieldset>
+
+        <fieldset>
+            <legend>Restricciones y Observaciones</legend>
+            <label>Restricción 1: <input type="text" name="rest1"></label><br>
+            <label>Restricción 2: <input type="text" name="rest2"></label><br>
+            <label>Restricción 3: <input type="text" name="rest3"></label><br>
+            <label>Restricción 4: <input type="text" name="rest4"></label><br>
+            <label>Observación 1: <input type="text" name="obs1"></label><br>
+            <label>Observación 2: <input type="text" name="obs2"></label><br>
+            <label>Observación 3: <input type="text" name="obs3"></label><br>
+            <label>Observación 4: <input type="text" name="obs4"></label><br>
+        </fieldset>
+
+        <fieldset>
+            <legend>Contacto ICE 1</legend>
+            <label>Nombre: <input type="text" name="ice1_nombre" required></label><br>
+            <label>Parentesco: <input type="text" name="ice1_parentesco" required></label><br>
+            <label>Teléfono visible (+57...): <input type="text" name="ice1_tel_visible" required></label><br>
+            <label>Teléfono botón (571...): <input type="text" name="ice1_tel_btn" required></label><br>
+        </fieldset>
+
+        <fieldset>
+            <legend>Contacto ICE 2</legend>
+            <label>Nombre: <input type="text" name="ice2_nombre" required></label><br>
+            <label>Parentesco: <input type="text" name="ice2_parentesco" required></label><br>
+            <label>Teléfono visible (+57...): <input type="text" name="ice2_tel_visible" required></label><br>
+            <label>Teléfono botón (571...): <input type="text" name="ice2_tel_btn" required></label><br>
+        </fieldset>
+
+        <button type="submit">Generar Tarjeta</button>
+    </form>
+
+    <script>
+        document.getElementById('formGenerador').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+
+            try {
+                const response = await fetch('/generar', {
+                    method: 'POST',
+                    body: formData
+                });
+                const result = await response.json();
+
+                if (result.success) {
+                    alert('¡Tarjeta generada con éxito!\nRuta de acceso: ' + result.url);
+                    e.target.reset();
+                } else {
+                    alert('Error al generar: ' + result.error);
+                }
+            } catch (error) {
+                alert('Error de conexión con el servidor.');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -13,7 +13,7 @@
     // ============================================================
 
     /* Número de WhatsApp con código de país (sin + ni espacios) */
-    var WHATSAPP_PHONE = '573001234567';
+    var WHATSAPP_PHONE = '573053865008';
 
     /* Mensajes predefinidos según la opción seleccionada */
     var WHATSAPP_MESSAGES = {

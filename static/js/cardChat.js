@@ -13,7 +13,7 @@
     // ============================================================
 
     /* Número de WhatsApp con código de país (sin + ni espacios) */
-    var WHATSAPP_PHONE = '573001234567';
+    var WHATSAPP_PHONE = '573053865008';
 
     /* Mensajes predefinidos según la opción seleccionada */
     var WHATSAPP_MESSAGES = {
@@ -182,22 +182,6 @@
         addBotMessage('✅ Te hemos redirigido a WhatsApp. Si no se abrió automáticamente, verifica que tienes WhatsApp instalado.');
     }
 
-    // ============================================================
-    // FLUJO DE CONVERSACIÓN
-    // ============================================================
-    function startConversation() {
-        messagesContainer.innerHTML = '';
-        optionsContainer.innerHTML = '';
-        isProcessing = false;
-
-        addBotMessage(
-            '¡Hola! 👋 Soy el asistente virtual de <strong>QRPreventiva</strong>. ¿En qué puedo ayudarte?',
-            function () {
-                isProcessing = false;
-                showMainOptions();
-            }
-        );
-    }
 
     function showMainOptions() {
         showOptions([
